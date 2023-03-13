@@ -23,6 +23,7 @@ nav ul {
 }
 
 nav ul li a{
+    font-size: 25px;
     padding: 15px;
     text-decoration: none;
     color: white;
