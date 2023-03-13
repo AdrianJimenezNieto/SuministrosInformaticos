@@ -1,0 +1,34 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+nav {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100vw;
+    height: 80px;
+    background-color: rgb(71, 66, 66);
+}
+
+nav ul {
+    text-decoration: none;
+    list-style: none;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    width: 90vw;
+}
+
+nav ul li a{
+    padding: 15px;
+    text-decoration: none;
+    color: white;
+}
+
+nav ul li a:hover {
+    text-decoration: none;
+    color: rgb(172, 154, 154);
+}

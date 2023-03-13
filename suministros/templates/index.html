@@ -1,0 +1,12 @@
+{% extends 'layout/base.html' %}
+
+{% block 'title' %}Inicio{% endblock  %}
+
+{% block 'content' %}
+    
+    <h1>Pagina de Inicio</h1>
+    <a href='{% url 'supplier' %}'>Proveedores</a>
+    <a href='{% url 'costumer' %}'>Clientes</a>
+    <a href='{% url 'staff' %}'>Administradores</a>
+
+{% endblock  %}
