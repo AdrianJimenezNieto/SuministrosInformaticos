@@ -12,7 +12,7 @@ class Product(models.Model):
     rack = models.IntegerField(max_length=50, blank=False, null=False)
     supPrice = models.FloatField(max_length=10000, blank=False, null=False)
     pvp = models.FloatField(max_length=10000, blank=False, null=False)
-    discount = models.FloatField(mac_length=10000, blank=False, null=False)
+    discount = models.FloatField(max_length=10000, blank=False, null=False)
     finalPrice = models.FloatField(max_length=10000, blank=False, null=False)
 
 
