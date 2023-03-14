@@ -12,9 +12,9 @@ def login(request):
 
         if validateUser(login):
             context = {
-                'accessLevel': request.POST['accessLevel'],
+                'accessLevel': Login.objects.get(username=login.username).accessLevel,
             }
-            return HttpResponse('login correcto ->' + context['accessLevel'])
+            return HttpResponse('login correcto ->' + str(context['accessLevel']))
         
         return HttpResponse('login fallido')
         
