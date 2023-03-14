@@ -1,0 +1,18 @@
+{% extends 'layout/base.html' %}
+
+{% block 'title' %}Acceso{% endblock  %}
+
+{% block 'content' %}
+    
+    <h1>Acceso</h1>
+    <form  action='{% url 'login' %}' method='POST'>
+        {% csrf_token %}
+        <table>
+            {{ form.as_table }}
+        </table>
+        <div>
+            <input type='submit' value='Log In'>
+        </div>
+    </form>
+
+{% endblock  %}

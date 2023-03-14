@@ -7,13 +7,13 @@ class Product(models.Model):
     description = models.TextField(max_length=1200, blank=False, null=False, default='Sin descripcion')
     ean13 = models.CharField(max_length=13, blank=False, null=False)
     ref = models.CharField(max_length=13, blank=False, null=False)
-    stock = models.IntegerField(max_length=2000, blank=False, null=False)
-    corridor = models.IntegerField(max_length=50, blank=False, null=False)
-    rack = models.IntegerField(max_length=50, blank=False, null=False)
-    supPrice = models.FloatField(max_length=10000, blank=False, null=False)
-    pvp = models.FloatField(max_length=10000, blank=False, null=False)
-    discount = models.FloatField(max_length=10000, blank=False, null=False)
-    finalPrice = models.FloatField(max_length=10000, blank=False, null=False)
+    stock = models.IntegerField(blank=False, null=False)
+    corridor = models.IntegerField(blank=False, null=False)
+    rack = models.IntegerField(blank=False, null=False)
+    supPrice = models.FloatField(blank=False, null=False)
+    pvp = models.FloatField(10000, blank=False, null=False)
+    discount = models.FloatField(blank=False, null=False)
+    finalPrice = models.FloatField(blank=False, null=False)
 
 
     def __str__(self):
