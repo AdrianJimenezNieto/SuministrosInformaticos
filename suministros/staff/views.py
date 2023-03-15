@@ -4,15 +4,18 @@ from .forms import StaffForm
 from django.http import HttpResponse
 
 def index(request):
-    return render(request, 'staff/index.html', {}) 
+    staffs = Staff.objects.all()
+    context = {
+        'staffs': staffs,
+    }
+    return render(request, 'staff/index.html', context) 
 
 def detail(request, id):
     staff = Staff.objects.get(id=id)
     context = {
         'staff': staff,
     }
-    # return render(request, 'staff/detail.html', context)
-    return HttpResponse('Ver staff en construccion')
+    return render(request, 'staff/detail.html', context)
 
 def create(request):
     if request.method == 'GET':
@@ -20,8 +23,7 @@ def create(request):
         context = {
             'form': form
         }
-        # return render(request, 'staff/create.html', context)
-        return HttpResponse('crear staff en construccion')
+        return render(request, 'staff/create.html', context)
 
     if request.method =='POST':
         form = StaffForm(request.POST)
@@ -30,14 +32,14 @@ def create(request):
 
 
 def edit(request, id):
-    staff = Staff.objects.het(id=id)
+    staff = Staff.objects.get(id=id)
     if request.method == 'GET':
         form = StaffForm(instance= staff)
         context = {
             'form': form,
             'id': id,
         }
-        return HttpResponse('editar staffo en construccion')
+        return render(request, 'staff/edit.html', context)
 
 
     if request.method == 'POST':
@@ -48,11 +50,10 @@ def edit(request, id):
                 'form': form,
                 'id': id,
             }
-        return HttpResponse('editar staffo en construccion')
+        return redirect('staff')
 
 
 def delete(request, id):
     staff = Staff.objects.get(id=id)
     staff.delete()
-    # return redirect(staff)
-    return HttpResponse('eliminar staffo en construccion')
+    return redirect('staff')

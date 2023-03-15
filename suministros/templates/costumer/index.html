@@ -2,6 +2,17 @@
 
 {% block 'title' %} Clientes {% endblock  %}
 
+
 {% block 'content' %}
- <h1>CLIENTES</h1>
+    <h1>CLIENTES</h1>
+    {% for costumer in costumers %}
+        {{ costumer.name }}
+        <span>
+            <ul>
+                <li><a href='{% url 'detailCostumer' id=costumer.id %}'>Ver cliente</a></li>
+                <li><a href='{% url 'editCostumer' id=costumer.id %}'>Editar cliente</a></li>
+                <li><a href='{% url 'deleteCostumer' id=costumer.id %}'>Borrar cliente</a></li>
+            <ul>
+        </span>
+    {% endfor %}
 {% endblock  %}

@@ -4,7 +4,11 @@ from .forms import CostumerForm
 from django.http import HttpResponse
 
 def index(request):
-    return render(request, 'costumer/index.html', {}) 
+    costumers = Costumer.objects.all()
+    context = {
+        'costumers': costumers,
+    }
+    return render(request, 'costumer/index.html', context) 
 
 def detail(request, id):
     costumer = Costumer.objects.get(id=id)
@@ -52,4 +56,4 @@ def edit(request, id):
 def delete(request, id):
     costumer = Costumer.objects.get(id=id)
     costumer.delete()
-    return redirect(costumer)
+    return redirect('costumer')

@@ -1,0 +1,14 @@
+{% extends 'layout/base.html' %}
+
+{% block 'title' %}EditarUsuario{% endblock  %}
+
+{% block 'content' %}
+
+    <h1>EditarUsuario</h1>
+    <form action='{% url 'editProduct' id=id%}' method='POST'>
+        {% csrf_token %}
+        {{form.as_p}}
+        <input type='submit' value='EditarUsuario'>
+    </form>
+
+{% endblock  %}

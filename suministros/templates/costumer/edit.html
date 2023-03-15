@@ -5,10 +5,12 @@
 {% block 'content' %}
 
     <h1>CrearUsuario</h1>
-    <form action='{% url 'editCostumer' %}' method='POST'>
+    <form action='{% url 'editCostumer' id=id %}' method='POST'>
+        {% csrf_token %}
         {{form.as_p}}
+        <input type='submit' value='Editar Usuario'>
     </form>
-    <input type='submmit' value='Editar Usuario'>
+    
 
 
 {% endblock  %}

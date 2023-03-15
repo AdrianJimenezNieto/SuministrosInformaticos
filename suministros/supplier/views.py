@@ -1,18 +1,20 @@
 from django.shortcuts import render, redirect
 from .models import Supplier
 from .forms import SupplierForm
-from django.http import HttpResponse
 
 def index(request):
-    return render(request, 'supplier/index.html', {}) 
+    suppliers = Supplier.objects.all()
+    context = {
+        'suppliers': suppliers,
+    }
+    return render(request, 'supplier/index.html', context) 
 
 def detail(request, id):
     supplier = Supplier.objects.get(id=id)
     context = {
         'supplier': supplier,
     }
-    # return render(request, 'supplier/detail.html', context)
-    return HttpResponse('Ver supplier en construccion')
+    return render(request, 'supplier/detail.html', context)
 
 def create(request):
     if request.method == 'GET':
@@ -20,8 +22,7 @@ def create(request):
         context = {
             'form': form
         }
-        # return render(request, 'supplier/create.html', context)
-        return HttpResponse('crear supplier en construccion')
+        return render(request, 'supplier/create.html', context)
 
     if request.method =='POST':
         form = SupplierForm(request.POST)
@@ -30,14 +31,14 @@ def create(request):
 
 
 def edit(request, id):
-    supplier = supplier.objects.het(id=id)
+    supplier = Supplier.objects.get(id=id)
     if request.method == 'GET':
         form = SupplierForm(instance= supplier)
         context = {
             'form': form,
             'id': id,
         }
-        return HttpResponse('editar suppliero en construccion')
+        return render(request, 'supplier/edit.html', context)
 
 
     if request.method == 'POST':
@@ -48,11 +49,10 @@ def edit(request, id):
                 'form': form,
                 'id': id,
             }
-        return HttpResponse('editar suppliero en construccion')
+        return redirect('supplier')
 
 
 def delete(request, id):
     supplier = Supplier.objects.get(id=id)
     supplier.delete()
-    # return redirect(supplier)
-    return HttpResponse('eliminar suppliero en construccion')
+    return redirect('supplier')
