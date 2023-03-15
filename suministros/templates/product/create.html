@@ -1,0 +1,14 @@
+{% extends 'layout/base.html' %}
+
+{% block 'title' %}CrearProducto{% endblock  %}
+
+{% block 'content' %}
+
+    <h1>CrearProducto</h1>
+    <form action='{% url 'createProduct' %}' method='POST'>
+        {{form.as_p}}
+    </form>
+    <input type='submmit' value='Crear Producto'>
+
+
+{% endblock  %}

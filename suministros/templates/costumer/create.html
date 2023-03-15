@@ -1,0 +1,14 @@
+{% extends 'layout/base.html' %}
+
+{% block 'title' %}CrearUsuario(Cliente){% endblock  %}
+
+{% block 'content' %}
+
+    <h1>CrearUsuario</h1>
+    <form action='{% url 'createCostumer' %}' method='POST'>
+        {{form.as_p}}
+    </form>
+    <input type='submmit' value='Crear Usuario'>
+
+
+{% endblock  %}

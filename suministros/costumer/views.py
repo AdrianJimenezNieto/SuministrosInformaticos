@@ -11,8 +11,7 @@ def detail(request, id):
     context = {
         'costumer': costumer,
     }
-    # return render(request, 'costumer/detail.html', context)
-    return HttpResponse('Ver costumer en construccion')
+    return render(request, 'costumer/detail.html', context)
 
 def create(request):
     if request.method == 'GET':
@@ -20,8 +19,7 @@ def create(request):
         context = {
             'form': form
         }
-        # return render(request, 'costumer/create.html', context)
-        return HttpResponse('crear costumer en construccion')
+        return render(request, 'costumer/create.html', context)
 
     if request.method =='POST':
         form = CostumerForm(request.POST)
@@ -30,14 +28,14 @@ def create(request):
 
 
 def edit(request, id):
-    costumer = Costumer.objects.het(id=id)
+    costumer = Costumer.objects.get(id=id)
     if request.method == 'GET':
         form = CostumerForm(instance= costumer)
         context = {
             'form': form,
             'id': id,
         }
-        return HttpResponse('editar costumero en construccion')
+        return render(request, 'costumer/edit.html', context)
 
 
     if request.method == 'POST':
@@ -48,11 +46,10 @@ def edit(request, id):
                 'form': form,
                 'id': id,
             }
-        return HttpResponse('editar costumero en construccion')
+        return redirect('costumer')
 
 
 def delete(request, id):
     costumer = Costumer.objects.get(id=id)
     costumer.delete()
-    # return redirect(costumer)
-    return HttpResponse('eliminar costumero en construccion')
+    return redirect(costumer)
