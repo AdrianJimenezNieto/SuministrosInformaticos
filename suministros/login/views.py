@@ -1,31 +1,38 @@
 from django.shortcuts import render
-from .models import Login
 from .forms import LoginForm
-from django.http import HttpResponse
+from costumer.models import Costumer
+from staff.models import Staff
+from supplier.models import Supplier
 
 def login(request):
-
+    form = LoginForm()
     if request.method == 'POST':
-        login = Login()
-        login.username = request.POST['username']
-        login.password = request.POST['password']
-        form = LoginForm()
-
-        if validateUser(login):
-            context = {
-                'accessLevel': Login.objects.get(username=login.username).accessLevel,
-            }
-            return render(request, 'index.html', context)
-        
+        if validateUser(request.POST['username'], request.POST['password'], request.POST['accessLevel']):
+            accessLevel = int(request.POST['accessLevel'])
+            return render(request, 'index.html', {'accessLevel': accessLevel})
+        form
         return render(request, 'login/login.html', {'form': form})
         
     if request.method == 'GET':
-        form = LoginForm()
         return render(request, 'login/login.html', {'form': form})
 
-def validateUser(login):
-    for user in Login.objects.values_list('username','password'):
-        if user[0] == login.username:
-            if user[1] == login.password:
-                return True
+def validateUser(username, password, accessLevel):
+    if int(accessLevel) == 1:
+        for costumer in Costumer.objects.all():
+            if costumer.username == username:
+                if costumer.password == password:
+                    return True
+
+    elif int(accessLevel) == 2:
+        for supplier in Supplier.objects.all():
+            if supplier.username == username:
+                if supplier.password == password:
+                    return True
+
+    else:
+        for staff in Staff.objects.all():
+            if staff.username == username:
+                if staff.password == password:
+                    return True
+    
     return False

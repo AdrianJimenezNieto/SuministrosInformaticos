@@ -1,9 +1,11 @@
-<nav>
-    <ul>
-        <li><a href='{% url 'index' %}'>Inicio</a><li>
-        <li><a href='{% url 'product' %}'>Productos</a></li>
-        <li><a href='{% url 'costumer' %}'>Clientes</a><li>
-        <li><a href='{% url 'supplier' %}'>Proveedores</a><li>
-        <li><a href='{% url 'staff' %}'>Administradores</a><li>
-    </ul>
-</nav>
+<header>
+    <h2 class='logo'>Logo</h2>
+    <nav class='navigation'>
+        <a href='{% url 'index' %}'>Inicio</a>
+        <a href='{% url 'product' %}'>Productos</a>
+        <a href='#'>Sobre nosotros</a>
+        <a href='#'>Perfil</a>
+        <button class='btnLogin-popup'>LogIn</button>
+        <button class='btnSingup-popup'>Registrarse</button>
+    </nav>
+</header>

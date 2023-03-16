@@ -1,7 +1,7 @@
-from django.forms import ModelForm
-from .models import Login
+from django import forms
 
-class LoginForm(ModelForm):
-    class Meta:
-        model = Login
-        exclude = ('accessLevel', '')
+class LoginForm(forms.Form):
+
+    username = forms.CharField(max_length=50, required=True)
+    password = forms.CharField(max_length=50,required=True)
+    accessLevel = forms.IntegerField(min_value=1,max_value=3, required=True)

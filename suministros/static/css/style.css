@@ -4,32 +4,49 @@
     box-sizing: border-box;
 }
 
-nav {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 100vw;
-    height: 80px;
+header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    padding: 20px 100px;
     background-color: rgb(71, 66, 66);
-}
-
-nav ul {
-    text-decoration: none;
-    list-style: none;
-    justify-content: center;
-    align-items: center;
     display: flex;
-    width: 90vw;
+    justify-content: space-between;
+    align-items: center;
 }
 
-nav ul li a{
-    font-size: 25px;
-    padding: 15px;
-    text-decoration: none;
-    color: white;
+.logo {
+    font-size: 2em;
+    color: #fff;
+    user-select: none;
 }
 
-nav ul li a:hover {
+.navigation a {
+    position: relative;
+    font-size: 1.1em;
+    color: #fff;
     text-decoration: none;
-    color: rgb(172, 154, 154);
+    font-weight: 500;
+    margin-left: 40px;
+}
+
+.navigation btnLogin-popup {
+    width: 130px;
+    height: 50px;
+    background-color: transparent;
+    border: 2px solid #fff;
+    outline: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 1.1em;
+    color: #fff;
+    font-weight: 500;
+    margin-left: 40px;
+    transition: .5s;
+}
+
+.navigation btnLogin-popup:hover {
+    background-color: #fff;
+    color:rgb(71, 66, 66);
 }
