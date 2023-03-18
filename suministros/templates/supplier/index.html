@@ -4,14 +4,14 @@
 
 {% block 'content' %}
     <h1>PROVEEDORES</h1>
-    {% for supplier in suppliers %}
-               {{ supplier.name }}
-               <span>
-                   <ul>
-                       <li><a href='{% url 'detailSupplier' id=supplier.id %}'>Ver proveedor</a></li>
-                       <li><a href='{% url 'editSupplier' id=supplier.id %}'>Editar proveedor</a></li>
-                       <li><a href='{% url 'deleteSupplier' id=supplier.id %}'>Borrar proveedor</a></li>
-                   <ul>
-               </span>
-           {% endfor %}
+    <ul class='list'>
+        {% for supplier in suppliers %}  
+        <li>
+            <h3>{{ supplier.name }}</h3>
+            <a href='{% url 'detailSupplier' id=supplier.id %}'>Ver Proveedor</a>
+            <a href='{% url 'editSupplier' id=supplier.id %}'>Editar Proveedor</a>
+            <a href='{% url 'deleteSupplier' id=supplier.id %}'>Borrar Proveedor</a>
+        </li>
+        {% endfor %}
+    </ul>
 {% endblock  %}

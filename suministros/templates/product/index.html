@@ -4,14 +4,14 @@
 
 {% block 'content' %}
     <h1>PRODUCTOS</h1>
-    {% for product in products %}
-            {{ product.name }}
-            <span>
-                <ul>
-                    <li><a href='{% url 'detailProduct' id=product.id %}'>Ver producto</a></li>
-                    <li><a href='{% url 'editProduct' id=product.id %}'>Editar producto</a></li>
-                    <li><a href='{% url 'deleteProduct' id=product.id %}'>Borrar producto</a></li>
-                <ul>
-            </span>
+    <ul class='list'>
+        {% for product in products %}  
+        <li>
+            <h3 class='product-name'>{{ product.name }}</h3>
+            <a href='{% url 'detailProduct' id=product.id %}'>Ver producto</a>
+            <a href='{% url 'editProduct' id=product.id %}'>Editar producto</a>
+            <a href='{% url 'deleteProduct' id=product.id %}'>Borrar producto</a>
+        </li>
         {% endfor %}
+    </ul>
 {% endblock  %}

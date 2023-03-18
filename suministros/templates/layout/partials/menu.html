@@ -1,10 +1,10 @@
 <header>
     <h2 class='logo'>Logo</h2>
     <nav class='navigation'>
-        <a href='{% url 'index' %}'>Inicio</a>
-        <a href='{% url 'product' %}'>Productos</a>
-        <a href='#'>Sobre nosotros</a>
-        <button class='btnLogin-popup'>LogIn</button>
-        <button class='btnSingup-popup'>Registrarse</button>
+        <a href='{% url 'index' %}' class='nav-a'>Inicio</a>
+        <a href='{% url 'product' %}' class='nav-a'>Productos</a>
+        <a href='#' class='nav-a'>Sobre nosotros</a>
+        <a class='btnLogin-popup' href='{% url 'login' %}'>LogIn</a>
+        <a class='btnSingup-popup' href='#'>Registrarse</a>
     </nav>
 </header>

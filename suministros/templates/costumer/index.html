@@ -5,14 +5,14 @@
 
 {% block 'content' %}
     <h1>CLIENTES</h1>
-    {% for costumer in costumers %}
-        {{ costumer.name }}
-        <span>
-            <ul>
-                <li><a href='{% url 'detailCostumer' id=costumer.id %}'>Ver cliente</a></li>
-                <li><a href='{% url 'editCostumer' id=costumer.id %}'>Editar cliente</a></li>
-                <li><a href='{% url 'deleteCostumer' id=costumer.id %}'>Borrar cliente</a></li>
-            <ul>
-        </span>
-    {% endfor %}
+    <ul class='list'>
+        {% for costumer in costumers %}  
+        <li>
+            <h3>{{ costumer.name }}</h3>
+            <a href='{% url 'detailCostumer' id=costumer.id %}'>Ver Cliente</a>
+            <a href='{% url 'editCostumer' id=costumer.id %}'>Editar Cliente</a>
+            <a href='{% url 'deleteCostumer' id=costumer.id %}'>Borrar Cliente</a>
+        </li>
+        {% endfor %}
+    </ul>
 {% endblock  %}

@@ -4,14 +4,14 @@
 
 {% block 'content' %}
     <h1>ADMINISTRADORES</h1>
-    {% for staff in staffs %}
-                {{ staff.name }}
-                <span>
-                    <ul>
-                        <li><a href='{% url 'detailStaff' id=staff.id %}'>Ver administrador</a></li>
-                        <li><a href='{% url 'editStaff' id=staff.id %}'>Editar administrador</a></li>
-                        <li><a href='{% url 'deleteStaff' id=staff.id %}'>Borrar administrador</a></li>
-                    <ul>
-                </span>
-            {% endfor %}
+    <ul class='list'>
+        {% for staff in staffs %}  
+        <li>
+            <h3>{{ staff.name }}</h3>
+            <a href='{% url 'detailStaff' id=staff.id %}'>Ver staff</a>
+            <a href='{% url 'editStaff' id=staff.id %}'>Editar staff</a>
+            <a href='{% url 'deleteStaff' id=staff.id %}'>Borrar staff</a>
+        </li>
+        {% endfor %}
+    </ul>
 {% endblock  %}
