@@ -4,9 +4,18 @@
 
 {% block 'content' %}
 
-    <h1>Datos del Producto</h1>
-    <li><b>Nombre de Producto: </b>{{ product.name }}</li>
-    <li>EN CONSTRUCCION...</li>
-
-
+    <div class='detail-container'>
+        <h1 class='title'>{{ product.name }}</h1>
+        <div class='img'><p>FOTO</p></div>
+        <ul class='description'>
+            <li><b>Nombre de Producto: </b>{{ product.name }}</li>
+            <li><b>Categoria: </b>{{ product.categoria }}</li>
+            <li><b>Resumen: </b>{{ product.shortDescription }}</li>
+            <li><b>Descripción: </b>{{ product.description }}</li>
+        </ul>
+        <div class='select'><p>SELECCIONA LA FOTO</p></div>
+        <div class='cart'><a href='#'>Añadir al carrito</a></div>
+    </div>
+    
+    
 {% endblock  %}

@@ -44,9 +44,12 @@ main {
     top: 100px;
     width: 100%;
     padding: 20px 20px 20px 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
-/* Menu */
+/* MENU */
 
 .logo {
     font-size: 2em;
@@ -127,9 +130,9 @@ main {
     color:rgb(71, 66, 66);
 }
 
-/* Menu */
+/* MENU */
 
-/* Product index */
+/* Product INDEX */
 
 .product-list {
     width: 100%;
@@ -138,7 +141,6 @@ main {
     justify-content: space-between;
     flex-direction: row;
     flex-wrap: wrap;
-    border: 1px solid #fff;
 }
 
 .product-list li{
@@ -149,9 +151,7 @@ main {
     margin: 10px 10px 10px 10px;
     display: flex;
     flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    border: 1px solid #fff;
+    justify-content: flex-start;
 }
 
 .actions {
@@ -162,7 +162,7 @@ main {
 }
 
 .product-list b{
-    font-size: 1.1em;
+    font-size: 1.5em;
     color: #fff;
     text-decoration: none;
     font-weight: 500;
@@ -171,7 +171,7 @@ main {
 
 .product-list a{
     position: relative;
-    font-size: 1.1em;
+    font-size: 1em;
     color: #fff;
     text-decoration: none;
     font-weight: 500;
@@ -210,3 +210,53 @@ main {
     color: #000;
 }
 
+/* Product INDEX */
+
+/* Product DETAIL */
+
+.detail-container {
+    width: 100%;
+    min-height: 800px;
+    display: grid;
+    grid-template-areas: 'title title' 
+                         'img description'
+                         'select cart';
+    grid-template-rows: 15% auto 15%;
+    width: 90%;
+    margin: 0 auto;
+}
+
+.title {
+    background-color: #7c82d8;
+    color:#000;
+    border: 2px solid beige;
+    grid-area: title;
+}
+
+.img {
+    background-color: #7c82d8;
+    color:#000;
+    border: 2px solid beige;
+    grid-area: img;
+}
+
+.description {
+    border: 2px solid beige;
+    background-color: #7c82d8;
+    color:#000;
+    grid-area: description;    
+}
+
+.select {
+    border: 2px solid beige;
+    background-color: #7c82d8;
+    color:#000;
+    grid-area: select;
+}
+
+.cart {
+    border: 2px solid beige;
+    background-color: #7c82d8;
+    color:#000;
+    grid-area: cart;
+}
