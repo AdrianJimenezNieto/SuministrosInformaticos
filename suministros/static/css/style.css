@@ -17,7 +17,6 @@
 
 
 body {
-    display: flex;
     justify-content: center;
     align-items: center;
     min-height: 100vh;
@@ -25,10 +24,10 @@ body {
     background: url('../img/background.jpg') no-repeat;
     background-size: cover;
     background-position: center;
+    background-attachment: fixed;
 }
 
 header {
-    position: fixed;
     top: 0;
     left: 0;
     width: 100%;
@@ -36,16 +35,18 @@ header {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    background-color: #000;
 }
 
 
 main {
-    position: fixed;
-    top:100px;
+    position: absolute;
+    top: 100px;
     width: 100%;
     padding: 20px 20px 20px 20px;
 }
 
+/* Menu */
 
 .logo {
     font-size: 2em;
@@ -126,28 +127,86 @@ main {
     color:rgb(71, 66, 66);
 }
 
-.list {
-    position: fixed;
-    top: 100;
-    left: 0;
+/* Menu */
+
+/* Product index */
+
+.product-list {
     width: 100%;
-    padding: 20px 100px;
+    padding: 20px;
+    display: flex;
+    justify-content: space-between;
+    flex-direction: row;
+    flex-wrap: wrap;
+    border: 1px solid #fff;
+}
+
+.product-list li{
+    width: 300px;
+    height: 300px;
+    list-style-type: none;
+    padding: 20px 20px 20px 20px;
+    margin: 10px 10px 10px 10px;
     display: flex;
     flex-direction: column;
-}
-
-.list li{
-    width: 100%;
-    list-style-type: none;
+    justify-content: center;
     align-items: center;
-    padding: 10px;
+    border: 1px solid #fff;
 }
 
-.list a{
+.actions {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.product-list b{
+    font-size: 1.1em;
+    color: #fff;
+    text-decoration: none;
+    font-weight: 500;
+    padding: 5px;
+}
+
+.product-list a{
     position: relative;
     font-size: 1.1em;
     color: #fff;
     text-decoration: none;
     font-weight: 500;
-    margin-left: 20px;
+    padding: 5px;
 }
+
+.product-list a::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: -10px;
+    width: 100%;
+    height: 3px;
+    background-color: #fff;
+    border-radius: 15px;
+    opacity: 0%;
+    transition: .5s;
+}
+
+.product-list a:hover::after {
+    bottom: -2px;
+    opacity: 100%;
+}
+
+.image {
+    width: 90%;
+    height: 100%;
+    background-color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-basis: 80%;
+}
+
+.image p {
+    color: #000;
+}
+
