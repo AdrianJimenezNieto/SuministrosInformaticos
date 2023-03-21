@@ -1,14 +1,16 @@
 {% extends 'layout/base.html' %}
 
-{% block 'title' %}CrearProducto{% endblock  %}
+{% block 'title' %}Edaitar Producto{% endblock  %}
 
 {% block 'content' %}
 
     <h1>Editar Producto</h1>
-    <form action='{% url 'editProduct' id=id%}' method='POST'>
-        {% csrf_token %}
-        {{form.as_p}}
-        <input type='submit' value='Editar Producto'>
-    </form>
+    <div class='editContainer'>
+        <form action='{% url 'editProduct' id=id%}' method='POST' class='editForm'>
+            {% csrf_token %}
+            {{form.as_p}}
+            <input type='submit' value='Editar Producto' class='btn-submit'>
+        </form>
+    </div>
 
 {% endblock  %}

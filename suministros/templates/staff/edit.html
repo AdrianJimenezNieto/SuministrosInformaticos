@@ -1,14 +1,16 @@
 {% extends 'layout/base.html' %}
 
-{% block 'title' %}CrearStaff{% endblock  %}
+{% block 'title' %}Editar Usuario (Administrador){% endblock  %}
 
 {% block 'content' %}
 
-    <h1>Editar Staff</h1>
-    <form action='{% url 'editStaff' id=id%}' method='POST'>
-        {% csrf_token %}
-        {{form.as_p}}
-        <input type='submit' value='Editar Staff'>
-    </form>
+    <h1>Editar Usuario</h1>
+    <div class='editContainer'>
+        <form action='{% url 'editStaff' id=id%}' method='POST' class='editForm'>
+            {% csrf_token %}
+            {{form.as_p}}
+            <input type='submit' value='Editar Staff' class='btn-submit'>
+        </form>
+    </div>
 
 {% endblock  %}
