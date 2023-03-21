@@ -332,14 +332,14 @@ main {
 }
 
 .editForm p input {
-    border: 0;
-    border-radius: 3px;
+    outline-offset: 5px;
+    border: none;
     background-color: transparent;
-    transition: .5s;
 }
 
 .editForm p textarea {
-    border-radius: 3px;
+    outline-offset: 5px;
+    border: none;
     background-color: transparent;
 }
 
@@ -363,3 +363,29 @@ main {
 }
 
 /* EDIT FORM */
+
+.loginContainer {
+    margin-top: 50px;
+    width: 450px;
+    border: 3px solid #fff;
+    border-radius: 30px;
+    background-color: #ffffff88;
+}
+
+.loginForm {
+    padding: 50px;
+    display: flex;
+    flex-direction: column;    
+}
+
+.loginForm p {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: space-between;
+    padding: 5px;
+}
+
+.loginForm p input {
+    background-color: transparent;
+}

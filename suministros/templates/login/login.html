@@ -5,14 +5,12 @@
 {% block 'content' %}
     
     <h1>Acceso</h1>
-    <form  action='{% url 'login' %}' method='POST'>
-        {% csrf_token %}
-        <table>
-            {{ form.as_table }}
-        </table>
-        <div>
-            <input type='submit' value='Log In'>
-        </div>
-    </form>
+    <div class='loginContainer'>
+        <form  action='{% url 'login' %}' method='POST' class='loginForm'>
+            {% csrf_token %}
+            {{ form.as_p }}
+            <input type='submit' value='Log In' class='btn-submit'>
+        </form>
+    </div>
 
 {% endblock  %}
