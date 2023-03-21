@@ -222,14 +222,16 @@ main {
                          'img description'
                          'select cart';
     grid-template-rows: 15% auto 15%;
+    grid-template-columns: 50%;
     width: 90%;
     margin: 0 auto;
 }
 
 .title {
-    background-color: #7c82d8;
-    color:#000;
-    border: 2px solid beige;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    padding: 10px;
     grid-area: title;
 }
 
@@ -237,26 +239,42 @@ main {
     background-color: #7c82d8;
     color:#000;
     border: 2px solid beige;
+
+    display: flex;
+    line-height: 50%;
+    padding: 10px;
+    align-items: center;
+    justify-content: center;
     grid-area: img;
 }
 
 .description {
-    border: 2px solid beige;
-    background-color: #7c82d8;
-    color:#000;
+    margin-left: 50px;
+    list-style: none;
+    display: flex;
+    padding: 10px;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
     grid-area: description;    
 }
 
+.description li {
+    margin-bottom: 20px;
+}
+
 .select {
-    border: 2px solid beige;
-    background-color: #7c82d8;
-    color:#000;
+    display: flex;
+    padding: 10px;
+    align-items: center;
+    justify-content: center;
     grid-area: select;
 }
 
 .cart {
-    border: 2px solid beige;
-    background-color: #7c82d8;
-    color:#000;
+    display: flex;
+    padding: 10px;
+    align-items: center;
+    justify-content: center;
     grid-area: cart;
 }
