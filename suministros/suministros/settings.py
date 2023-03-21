@@ -44,6 +44,7 @@ INSTALLED_APPS = [
     'login',
     'shoppingCart',
     'django_seed',
+    'register',
 ]
 
 MIDDLEWARE = [

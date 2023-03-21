@@ -364,6 +364,8 @@ main {
 
 /* EDIT FORM */
 
+/* LOGIN */
+
 .loginContainer {
     margin-top: 50px;
     width: 450px;
@@ -375,7 +377,8 @@ main {
 .loginForm {
     padding: 50px;
     display: flex;
-    flex-direction: column;    
+    flex-direction: column;
+    align-content: center;    
 }
 
 .loginForm p {
@@ -389,3 +392,19 @@ main {
 .loginForm p input {
     background-color: transparent;
 }
+
+.loginForm select {
+    background-color: transparent;
+    color:#000;
+}
+
+.loginForm select option {
+    background-color: transparent;
+    color: black;
+}
+
+.loginForm .btn-submit{ 
+    margin-top: 70px;
+}
+
+/* LOGIN */
