@@ -8,12 +8,19 @@
         <h1 class='title'>{{ product.name }}</h1>
         <div class='img'><p>FOTO</p></div>
         <ul class='description'>
-            <li><b>Nombre de Producto: </b>{{ product.name }}</li>
-            <li><b>Categoria: </b>{{ product.categoria }}</li>
-            <li><b>Resumen: </b>{{ product.shortDescription }}</li>
-            <li><b>Descripción: </b>{{ product.description }}</li>
+            <li><h3>Nombre de Producto: </h3>{{ product.name }}</li>
+            <li><h3>Categoria: </h3>{{ product.categoria }}</li>
+            <li><h3>Resumen: </h3>{{ product.shortDescription }}</li>
+            <li><h3>Descripción: </h3>{{ product.description }}</li>
+            <li>
+                <h3>Precio:</h3>
+                <div class='price'>
+                    <b>{{ product.finalPrice|floatformat:2 }} €</b>
+                    <p class='pvp'>{{ product.pvp|floatformat:2}} €</p>
+                    <p class='discount'>({{ product.discount|floatformat:2 }} %)</p>
+                </div>
+            </li>
         </ul>
-        <div class='select'><p>SELECCIONA LA FOTO</p></div>
         <div class='cart'><a href='#'>Añadir al carrito</a></div>
     </div>
     

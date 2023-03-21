@@ -17,8 +17,6 @@
 
 
 body {
-    justify-content: center;
-    align-items: center;
     min-height: 100vh;
     min-width: 100vw;
     background: url('../img/background.jpg') no-repeat;
@@ -45,8 +43,10 @@ main {
     width: 100%;
     padding: 20px 20px 20px 20px;
     display: flex;
+    flex-wrap: wrap;
     flex-direction: column;
     align-items: center;
+    justify-content: center;
 }
 
 /* MENU */
@@ -132,13 +132,13 @@ main {
 
 /* MENU */
 
-/* Product INDEX */
+/* PRODUCT INDEX */
 
 .product-list {
     width: 100%;
     padding: 20px;
     display: flex;
-    justify-content: flex-start;
+    justify-content: space-between;
     flex-direction: row;
     flex-wrap: wrap;
 }
@@ -210,9 +210,9 @@ main {
     color: #000;
 }
 
-/* Product INDEX */
+/* PRODUCT INDEX */
 
-/* Product DETAIL */
+/* PRODUCT DETAIL */
 
 .detail-container {
     width: 100%;
@@ -220,7 +220,7 @@ main {
     display: grid;
     grid-template-areas: 'title title' 
                          'img description'
-                         'select cart';
+                         'cart cart';
     grid-template-rows: 15% auto 15%;
     grid-template-columns: 50%;
     width: 90%;
@@ -263,12 +263,8 @@ main {
     margin-bottom: 20px;
 }
 
-.select {
-    display: flex;
-    padding: 10px;
-    align-items: center;
-    justify-content: center;
-    grid-area: select;
+.description li h3 {
+    font-size: 1.8em;
 }
 
 .cart {
@@ -278,3 +274,92 @@ main {
     justify-content: center;
     grid-area: cart;
 }
+
+.price{
+    display: grid;
+    grid-template-areas: 'price price'
+                         'pvp discount';
+    width: 100%;
+    padding: 10px;
+}
+
+.price b {
+    grid-area: price;
+    padding: 5px;
+    font-size: 1.7em;
+}
+
+.discount {
+    grid-area: discount;
+    padding: 5px;
+}
+
+.pvp {
+    grid-area: pvp;
+    padding: 5px;
+    text-decoration: line-through;
+    opacity: 75%; 
+}
+
+/* PRODUCT DETAIL */
+
+/* EDIT FORM */
+
+.editContainer {
+    margin-top: 50px;
+    width: 500px;
+    border: 3px solid #fff;
+    border-radius: 30px;
+    background-color: #ffffff88;
+}
+
+.editForm {
+    padding: 50px;
+    display: flex;
+    flex-direction: column;    
+}
+
+.editForm p {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: space-between;
+    padding: 5px;
+}
+
+.editForm label {
+    font-size: 1.1em;
+}
+
+.editForm p input {
+    border: 0;
+    border-radius: 3px;
+    background-color: transparent;
+    transition: .5s;
+}
+
+.editForm p textarea {
+    border-radius: 3px;
+    background-color: transparent;
+}
+
+.btn-submit {
+    margin-top: 15px;
+    background-color: transparent;
+    color: #fff;
+    font-weight: 500;
+    font-size: 1.5em;
+    cursor: pointer;
+    height: 50px;
+    border: 1px solid #fff;
+    border-radius: 7px;
+    transition: 0.5s;
+}
+
+.btn-submit:hover {
+    border: 1px solid #000;
+    background-color: #fff;
+    color:#000;
+}
+
+/* EDIT FORM */

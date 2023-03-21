@@ -1,16 +1,17 @@
 {% extends 'layout/base.html' %}
 
-{% block 'title' %}CrearUsuario(Cliente){% endblock  %}
+{% block 'title' %}Editar Usuario(Cliente){% endblock  %}
 
 {% block 'content' %}
 
-    <h1>CrearUsuario</h1>
-    <form action='{% url 'editCostumer' id=id %}' method='POST'>
-        {% csrf_token %}
-        {{form.as_p}}
-        <input type='submit' value='Editar Usuario'>
-    </form>
-    
+    <h1>Editar Usuario</h1>
 
+    <div class='editContainer'>
+        <form action='{% url 'editCostumer' id=id %}' method='POST' class='editForm'>
+            {% csrf_token %}
+            {{form.as_p}}
+            <input type='submit' value='Editar Usuario' class='btn-submit'>
+        </form>
+    <div>
 
 {% endblock  %}
