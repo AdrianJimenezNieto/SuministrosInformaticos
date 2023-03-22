@@ -366,22 +366,22 @@ main {
 
 /* LOGIN */
 
-.loginContainer {
+.containerForm {
     margin-top: 50px;
-    width: 450px;
-    border: 3px solid #fff;
+    width: 400px;
+    border: 3px solid #fff; 
     border-radius: 30px;
     background-color: #ffffff88;
 }
 
-.loginForm {
+.selectForm {
     padding: 50px;
     display: flex;
     flex-direction: column;
     align-content: center;    
 }
 
-.loginForm p {
+.selectForm p {
     display: flex;
     flex-direction: row;
     align-items: flex-start;
@@ -389,22 +389,26 @@ main {
     padding: 5px;
 }
 
-.loginForm p input {
+.selectForm p input {
     background-color: transparent;
 }
 
-.loginForm select {
+.selectForm select {
     background-color: transparent;
     color:#000;
 }
 
-.loginForm select option {
+.selectForm select option {
     background-color: transparent;
     color: black;
 }
 
-.loginForm .btn-submit{ 
+.selectForm .btn-submit{ 
     margin-top: 70px;
 }
 
 /* LOGIN */
+
+.containerForm.create{
+    width: 500px;
+}

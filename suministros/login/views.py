@@ -3,6 +3,7 @@ from .forms import LoginForm
 from costumer.models import Costumer
 from staff.models import Staff
 from supplier.models import Supplier
+from django.http import HttpResponse
 
 def login(request):
     form = LoginForm()
@@ -10,7 +11,6 @@ def login(request):
         if validateUser(request.POST['username'], request.POST['password'], request.POST['accessLevel']):
             accessLevel = int(request.POST['accessLevel'])
             return render(request, 'index.html', {'accessLevel': accessLevel})
-        form
         return render(request, 'login/login.html', {'form': form})
         
     if request.method == 'GET':

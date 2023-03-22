@@ -1,12 +1,12 @@
 {% extends 'layout/base.html' %}
 
-{% block 'title' %}Acceso{% endblock  %}
+{% block 'title' %}Crear{% endblock  %}
 
 {% block 'content' %}
     
-    <h1>Acceso</h1>
-    <div class='containerForm'>
-        <form  action='{% url 'login' %}' method='POST' class='selectForm'>
+    <h1>Crear Usuario</h1>
+    <div class='containerForm create'>
+        <form  action='{% url 'register' %}' method='POST' class='selectForm'>
             {% csrf_token %}
             {{ form.as_p }}
             <input type='submit' value='Log In' class='btn-submit'>
