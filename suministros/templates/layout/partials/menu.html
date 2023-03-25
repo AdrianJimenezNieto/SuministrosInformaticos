@@ -4,7 +4,13 @@
         <a href='{% url 'index' %}' class='nav-a'>Inicio</a>
         <a href='{% url 'product' %}' class='nav-a'>Productos</a>
         <a href='#' class='nav-a'>Sobre nosotros</a>
-        <a class='btnLogin-popup' href='{% url 'login' %}'>LogIn</a>
-        <a class='btnSingup-popup' href='{% url 'register' %}'>Registrarse</a>
+        {% if user.is_authenticated %}
+            <p>Sesión iniciada como {{ user.username }} | </p>
+            <a class='btnLogin-popup' href='{% url 'logout' %}'>Log Out</a>
+        {% else %}
+            <a class='btnLogin-popup' href='{% url 'login' %}'>LogIn</a>
+            <a class='btnSingup-popup' href='{% url 'register' %}'>Registrarse</a>
+        {% endif %}
+        
     </nav>
 </header>

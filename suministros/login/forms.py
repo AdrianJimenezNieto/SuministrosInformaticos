@@ -1,10 +1,14 @@
 from django import forms
+from django.contrib.auth.forms import UserCreationForm
+from django.contrib.auth.models import User
 
-class LoginForm(forms.Form):
-    choices = ((1, 'Administrador'),
-               (2, 'Proveedor'),
-               (3, 'Cliente'),)
+class RegisterForm(UserCreationForm):
+    email = forms.EmailField(required=True)
+    identification = forms.CharField(required=True)
+    adress = forms.CharField(required=True)
+    cp = forms.CharField(required=True)
 
-    username = forms.CharField(max_length=50, required=True)
-    password = forms.CharField(max_length=50,required=True)
-    accessLevel = forms.ChoiceField(choices=choices)
+    class Meta:
+        model = User
+        fields = ['username', 'email', 'identification', 'first_name', 'last_name',
+                   'adress', 'cp', 'password1', 'password2']

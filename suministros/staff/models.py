@@ -5,7 +5,6 @@ class Staff(models.Model):
     name = models.CharField(max_length=50, blank=False)
     username = models.CharField(max_length=50, blank=False)
     lastName = models.CharField(max_length=50, blank=False)
-    info = models.TextField(max_length=1200, blank=False)
     adress = models.CharField(max_length=50, blank=False)
     cp = models.CharField(max_length=50, blank=False)
     dateSingUp = models.DateField(default=date.today)

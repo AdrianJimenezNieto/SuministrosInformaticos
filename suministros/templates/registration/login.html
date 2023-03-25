@@ -1,0 +1,17 @@
+{% extends 'layout/base.html' %}
+
+{% block 'title' %}Acceso{% endblock  %}
+
+{% block 'content' %}
+    
+    <h1>Acceso</h1>
+    <div class='containerForm'>
+        <form  action='{% url 'login' %}' method='POST' class='selectForm'>
+            {% csrf_token %}
+            {{ form.as_p }}
+            <p>¿No tienes una cuenta? Regístrate <a href="/signUp">AQUI</a>!!</p>
+            <input type='submit' value='Log In' class='btn-submit'>
+        </form>
+    </div>
+
+{% endblock  %}
