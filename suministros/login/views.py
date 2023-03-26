@@ -1,6 +1,5 @@
 from django.shortcuts import render, redirect
 from .forms import RegisterForm
-from django.contrib.auth.decorators import login_required
 from django.contrib.auth import login, logout, authenticate
 
 from django.http import HttpResponse
