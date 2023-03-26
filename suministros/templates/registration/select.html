@@ -1,12 +1,8 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Seleccionar tipo</title>
-</head>
-<body>
+{% extends 'layout/base.html' %}
+
+{% block 'title' %}Registrarse{% endblock  %}
+
+{% block 'content' %}
     <h1>Seleccionar tipo</h1>
     <div class='containerForm'>
         <form  action='{% url 'select'%}' method='POST' class='selectForm'>
@@ -15,5 +11,4 @@
             <input type='submit' value='Registrarse' class='btn-submit'>
         </form>
     </div>
-</body>
-</html>
+{% endblock  %}

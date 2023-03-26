@@ -41,7 +41,6 @@ INSTALLED_APPS = [
     'costumer',
     'staff',
     'product',
-    'login',
     'django_seed',
     'register',
 ]
@@ -135,4 +134,4 @@ STATICFILES_DIRS = [
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 LOGIN_REDIRECT_URL = '/'
-LOGOUT_REDIRECT_URL = '/users/login'
+LOGOUT_REDIRECT_URL = '/'

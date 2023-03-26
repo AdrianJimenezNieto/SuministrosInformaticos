@@ -5,7 +5,7 @@ from django.contrib.auth.decorators import login_required
 
 from django.http import HttpResponse
 
-@login_required(login_url='/users/login')
+@login_required(login_url='/register/login')
 def index(request):
     products = Product.objects.all()
     context = {

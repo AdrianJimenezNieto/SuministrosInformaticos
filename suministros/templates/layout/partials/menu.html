@@ -5,12 +5,11 @@
         <a href='{% url 'product' %}' class='nav-a'>Productos</a>
         <a href='#' class='nav-a'>Sobre nosotros</a>
         {% if user.is_authenticated %}
-            <p>Sesión iniciada como {{ user.username }} | </p>
-            <a class='btnLogin-popup' href='{% url 'logout' %}'>Log Out</a>
+            <p>Sesión iniciada como {{ user.username | upper}} | </p>
+            <a class='btnLogout-popup' href='{% url 'logout' %}'>Log Out</a>
         {% else %}
             <a class='btnLogin-popup' href='{% url 'login' %}'>LogIn</a>
-            <a class='btnSingup-popup' href='{% url 'register' %}'>Registrarse</a>
+            <a class='btnSingup-popup' href='{% url 'select' %}'>Registrarse</a>
         {% endif %}
-        
     </nav>
 </header>
