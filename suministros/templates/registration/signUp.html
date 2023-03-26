@@ -1,15 +1,15 @@
 {% extends 'layout/base.html' %}
 
-{% block 'title' %}Acceso{% endblock  %}
+{% block 'title' %}Registrarse{% endblock  %}
 
 {% block 'content' %}
     
-    <h1>Acceso</h1>
+    <h1>Registrarse</h1>
     <div class='containerForm'>
-        <form  action='{% url 'login' %}' method='POST' class='selectForm'>
+        <form  action='{% url 'signUp' acceso=acceso %}' method='POST' class='selectForm'>
             {% csrf_token %}
             {{ form.as_p }}
-            <input type='submit' value='Log In' class='btn-submit'>
+            <input type='submit' value='Registrarse' class='btn-submit'>
             <p>¿Ya tienes una cuenta? Inicia sesión <a href="/login">AQUI</a>!!</p>
         </form>
     </div>

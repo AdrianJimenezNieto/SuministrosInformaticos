@@ -1,7 +1,8 @@
-from django.forms import ModelForm
 from .models import Costumer
+from django.contrib.auth.forms import UserCreationForm
 
-class CostumerForm(ModelForm):
+class CostumerForm(UserCreationForm):
     class Meta:
         model = Costumer;
-        fields = '__all__'
+        fields = ['first_name', 'last_name', 'username', 'password1', 'password2', 'idcard','email'
+                  , 'adress', 'cp', 'birth']

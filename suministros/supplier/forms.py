@@ -1,7 +1,12 @@
-from django.forms import ModelForm
 from .models import Supplier
+from django.contrib.auth.forms import UserCreationForm
 
-class SupplierForm(ModelForm):
+class SupplierForm(UserCreationForm):
     class Meta:
         model = Supplier;
-        fields = '__all__'
+        fields = ['first_name', 'password1', 'password2', 'cif', 'email', 'adress', 'cp', 'info']
+
+        
+        
+        
+        

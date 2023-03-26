@@ -2,8 +2,6 @@ from django.shortcuts import render, redirect
 from .forms import RegisterForm
 from django.contrib.auth import login, logout, authenticate
 
-from django.http import HttpResponse
-
 def signUp(request):
     if request.method == 'POST':
         form = RegisterForm(request.POST)
@@ -15,4 +13,3 @@ def signUp(request):
     if request.method == 'GET':
         form = RegisterForm()
     return render(request, 'registration/signUp.html', {'form': form})
-

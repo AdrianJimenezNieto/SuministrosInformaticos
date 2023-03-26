@@ -6,7 +6,6 @@ class Supplier(User):
     adress = models.CharField(max_length=50)
     cp = models.CharField(max_length=10)
     cif = models.CharField(max_length=10, default='00000000X')
-    accessLevel = models.IntegerField(default=2)
 
     def __str__(self):
         return self.name
