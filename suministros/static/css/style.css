@@ -15,6 +15,31 @@
     color:#fff;
 }
 
+*::-webkit-scrollbar {
+    -webkit-appearance: none;
+}
+
+*::-webkit-scrollbar:vertical {
+    width:10px;
+}
+
+*::-webkit-scrollbar-button:increment,*::-webkit-scrollbar-button {
+    display: none;
+} 
+
+*::-webkit-scrollbar:horizontal {
+    height: 10px;
+}
+
+*::-webkit-scrollbar-thumb {
+    background-color: #797979;
+    border-radius: 20px;
+    border: 2px solid #f1f2f3;
+}
+
+*::-webkit-scrollbar-track {
+    border-radius: 10px;  
+}
 
 body {
     min-height: 100vh;
@@ -23,43 +48,66 @@ body {
     background-size: cover;
     background-position: center;
     background-attachment: fixed;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
 }
 
 header {
     top: 0;
     left: 0;
     width: 100%;
-    padding: 20px 100px;
+    padding: 20px 25px 10px 25px;
     display: flex;
-    justify-content: space-between;
-    align-items: center;
+    flex-direction: column;
+    justify-content: start;
     background-color: #000;
 }
 
 
 main {
-    position: absolute;
-    top: 100px;
+    flex: 1;
     width: 100%;
-    padding: 20px 20px 20px 20px;
+    height: 100%;
+    padding: 20px 20px 30px 20px;
     display: flex;
     flex-wrap: wrap;
     flex-direction: column;
     align-items: center;
+    justify-content: flex-start;
+}
+
+footer {
+    height: 150px;
+    display: flex;
+    align-items: center;
     justify-content: center;
+}
+
+.delimiter {
+    height: 3px;
+    background: linear-gradient(to right, transparent, #fff 70%, transparent)
 }
 
 /* MENU */
 
 .logo {
+    text-align: center;
     font-size: 2em;
     color: #fff;
     user-select: none;
 }
 
 .navigation {
+    margin-top: 15px;
     display: flex;
     justify-content: space-between;
+    align-items: center;
+}
+
+.navigation div {
+    display: flex;
+    height: 100%;
     align-items: center;
 }
 
@@ -93,9 +141,6 @@ main {
 }
 
 .navigation .btnLogin-popup {
-    position: relative;
-    width: 130px;
-    height: 50px;
     text-decoration: none;
     background-color: transparent;
     padding: 10px 10px;
@@ -112,12 +157,10 @@ main {
 
 .navigation .btnLogin-popup:hover {
     background-color: #fff;
-    color:rgb(71, 66, 66);
+    color:#fff;
 }
 
 .navigation .btnSingup-popup {
-    width: 130px;
-    height: 50px;
     text-decoration: none;
     background-color: transparent;
     border: 2px solid #fff;
@@ -134,17 +177,19 @@ main {
 
 .navigation .btnSingup-popup:hover {
     background-color: #7c82d8;
-    color:rgb(71, 66, 66);
+    color:#fff;
 }
 
 .navigation p {
     position: relative;
-    margin-left:50px;
+    font-size: 1.1em;
+    color: #fff;
+    text-decoration: none;
+    font-weight: 500;
+    margin-left: 40px;
 }
 
 .navigation .btnLogout-popup {
-    width: 130px;
-    height: 50px;
     text-decoration: none;
     background-color: transparent;
     border: 2px solid #fff;
@@ -161,7 +206,7 @@ main {
 
 .navigation .btnLogout-popup:hover {
     background-color: #a81313;
-    color:rgb(71, 66, 66);
+    color:#fff;
 }
 
 /* MENU */
@@ -341,22 +386,27 @@ main {
 
 .editContainer {
     margin-top: 50px;
-    width: 500px;
+    width: 700px;
     border: 3px solid #fff;
     border-radius: 30px;
     background-color: #ffffff88;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
 }
 
 .editForm {
     padding: 50px;
     display: flex;
-    flex-direction: column;    
+    flex-wrap: wrap;
+    flex-direction: column;
 }
 
 .editForm p {
     display: flex;
+    flex-wrap: wrap;
     flex-direction: row;
-    align-items: flex-start;
+    align-items: flex;
     justify-content: space-between;
     padding: 5px;
 }
@@ -366,8 +416,7 @@ main {
 }
 
 .editForm p input {
-    outline-offset: 5px;
-    border: none;
+    margin: 10px;
     background-color: transparent;
 }
 

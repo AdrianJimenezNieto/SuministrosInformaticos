@@ -1,15 +1,25 @@
 <header>
     <h2 class='logo'>Logo</h2>
     <nav class='navigation'>
-        <a href='{% url 'index' %}' class='nav-a'>Inicio</a>
-        <a href='{% url 'product' %}' class='nav-a'>Productos</a>
-        <a href='#' class='nav-a'>Sobre nosotros</a>
-        {% if user.is_authenticated %}
-            <p>Sesión iniciada como {{ user.username | upper}} | </p>
-            <a class='btnLogout-popup' href='{% url 'logout' %}'>Log Out</a>
-        {% else %}
-            <a class='btnLogin-popup' href='{% url 'login' %}'>LogIn</a>
-            <a class='btnSingup-popup' href='{% url 'select' %}'>Registrarse</a>
-        {% endif %}
+        <div>
+            <a href='{% url 'index' %}' class='nav-a'>Inicio</a>
+            <a href='{% url 'product' %}' class='nav-a'>Productos</a>
+        </div>
+        <div>
+            {% if user.is_authenticated %}
+                <p>Sesión iniciada como {{ user.username | upper}} | </p>
+                {% if user.is_staff == True %}
+                <a class='btnLogout-popup' href='{% url 'editCostumer' id=user.id %}'>Editar Perfil</a>
+                {% elif user.is_staff == True %}
+                <a class='btnLogout-popup' href='{% url 'editSuplier' id=user.id %}'>Editar Perfil</a>
+                {% elif user.is_staff == True %}
+                <a class='btnLogout-popup' href='{% url 'editStaff' id=user.id %}'>Editar Perfil</a>
+                {% endif %}
+                <a class='btnLogout-popup' href='{% url 'logout' %}'>Log Out</a>
+            {% else %}
+                <a class='btnLogin-popup' href='{% url 'login' %}'>LogIn</a>
+                <a class='btnSingup-popup' href='{% url 'select' %}'>Registrarse</a>
+            {% endif %}
+        </div>
     </nav>
 </header>

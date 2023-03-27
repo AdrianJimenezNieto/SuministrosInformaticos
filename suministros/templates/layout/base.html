@@ -12,21 +12,13 @@
 </head>
 <body>
     {% include 'layout/partials/menu.html' %}
-    {% if accessLevel == 1 %}
-        <hr>
-        {% include 'layout/partials/menuCostumer.html' %}
-    {% endif %}
-    {% if accessLevel == 2 %}
-        <hr>
-        {% include 'layout/partials/menuSupplier.html' %}
-    {% endif %}
-    {% if accessLevel == 3 %}
-        <hr>
-        {% include 'layout/partials/menuAdmin.html' %}
-    {% endif %}
     <main>
         {% block 'content' %}{% endblock  %}
     </main>
     {% block 'scripts' %}{% endblock  %}
 </body>
+<div class='delimiter'></div>
+<footer>
+    <p>Esto es el footer de la aplicacion web.</p>
+</footer>
 </html>

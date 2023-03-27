@@ -6,6 +6,8 @@ class Supplier(User):
     adress = models.CharField(max_length=50)
     cp = models.CharField(max_length=10)
     cif = models.CharField(max_length=10, default='00000000X')
+    isCostumer = models.BooleanField(default=False)
+    isSupplier = models.BooleanField(default=True)
 
     def __str__(self):
         return self.name
