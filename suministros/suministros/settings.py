@@ -44,6 +44,7 @@ INSTALLED_APPS = [
     'django_seed',
     'register',
     'graphs',
+    'sale',
 ]
 
 MIDDLEWARE = [
