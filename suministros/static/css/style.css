@@ -81,7 +81,7 @@ footer {
     height: 150px;
     display: flex;
     align-items: center;
-    justify-content: center;
+    justify-content:center;
 }
 
 .delimiter {
@@ -157,7 +157,7 @@ footer {
 
 .navigation .btnLogin-popup:hover {
     background-color: #fff;
-    color:#fff;
+    color:#000;
 }
 
 .navigation .btnSingup-popup {

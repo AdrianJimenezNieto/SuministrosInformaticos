@@ -9,7 +9,7 @@
         <form  action='{% url 'login' %}' method='POST' class='selectForm'>
             {% csrf_token %}
             {{ form.as_p }}
-            <p>¿No tienes una cuenta? Regístrate<a href="/signUp">AQUI</a>!!</p>
+            <p style='font-size: 0.9em; margin-top:15px;'>¿No tienes una cuenta? Regístrate<a href="/signUp">AQUI</a>!!</p>
             <input type='submit' value='Log In' class='btn-submit'>
         </form>
     </div>

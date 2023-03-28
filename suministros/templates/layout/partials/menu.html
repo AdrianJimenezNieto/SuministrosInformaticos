@@ -2,23 +2,26 @@
     <h2 class='logo'>Logo</h2>
     <nav class='navigation'>
         <div>
-            <a href='{% url 'index' %}' class='nav-a'>Inicio</a>
-            <a href='{% url 'product' %}' class='nav-a'>Productos</a>
+            <a href='{% url 'index' %}' class='nav-a'>INICIO</a>
+            <a href='{% url 'product' %}' class='nav-a'>PRODUCTOS</a>
+            {% if user.is_authenticated %}
+                <a href='{% url 'graphs' %}' class='nav-a'>GRAFICAS</a>
+            {% endif %}
         </div>
         <div>
             {% if user.is_authenticated %}
-                <p>Sesión iniciada como {{ user.username | upper}} | </p>
-                {% if user.is_staff == True %}
-                <a class='btnLogout-popup' href='{% url 'editCostumer' id=user.id %}'>Editar Perfil</a>
+                <p>Sesión iniciada como {{ user.username | upper}} </p>
+                {% if user.costumer.isCostumer == True %}
+                <a class='btnLogout-popup' href='{% url 'editCostumer' id=user.id %}'>EDITAR PERFIL</a>
+                {% elif user.supplier.isSupplier == True %}
+                <a class='btnLogout-popup' href='{% url 'editSupplier' id=user.id %}'>EDITAR PERFIL</a>
                 {% elif user.is_staff == True %}
-                <a class='btnLogout-popup' href='{% url 'editSuplier' id=user.id %}'>Editar Perfil</a>
-                {% elif user.is_staff == True %}
-                <a class='btnLogout-popup' href='{% url 'editStaff' id=user.id %}'>Editar Perfil</a>
+                <a class='btnLogout-popup' href='{% url 'editStaff' id=user.id %}'>EDITAR PERFIL</a>
                 {% endif %}
-                <a class='btnLogout-popup' href='{% url 'logout' %}'>Log Out</a>
+                <a class='btnLogout-popup' href='{% url 'logout' %}'>LOG OUT</a>
             {% else %}
-                <a class='btnLogin-popup' href='{% url 'login' %}'>LogIn</a>
-                <a class='btnSingup-popup' href='{% url 'select' %}'>Registrarse</a>
+                <a class='btnLogin-popup' href='{% url 'login' %}'>LOG IN</a>
+                <a class='btnSingup-popup' href='{% url 'select' %}'>REGISTRARSE</a>
             {% endif %}
         </div>
     </nav>
