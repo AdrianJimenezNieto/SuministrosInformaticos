@@ -1,0 +1,16 @@
+{% extends 'layout/base.html' %}
+
+{% block 'content' %}
+
+    <a href='{% url 'list-cart' %} '> Listar Carritos </a>
+    <a href='{% url 'detail-cart' pk=1 %} '> Ver Carrito </a>
+    <a href='{% url 'create-cart' %} '> Crear Carrito </a>
+    <a href='{% url 'update-cart' pk=1 %} '> Actualizar Carrito </a>
+    <a href='{% url 'delete-cart' pk=1 %} '> Ver Carrito </a>
+    <a href='{% url 'list-cartitem' %} '> Listar items </a>
+    <a href='{% url 'detail-cartitem' pk=1 %} '> Ver Item </a>
+    <a href='{% url 'create-cartitem' %} '> Crear Item </a>
+    <a href='{% url 'update-cartitem' pk=1 %} '> Actualizar item </a>
+    <a href='{% url 'delete-cartitem' pk=1 %} '> Borrar Item </a>
+    
+    {% endblock  %}
