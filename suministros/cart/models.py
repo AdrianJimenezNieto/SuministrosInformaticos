@@ -11,11 +11,7 @@ class Cart(models.Model):
 class CartItem(models.Model):
     product = models.ForeignKey(Product, on_delete=models.CASCADE)
     quantity = models.IntegerField(default=1)
-    cart = models.ForeignKey('Cart', on_delete=models.CASCADE)
-
-    def price_ttc(self):
-        TAX_AMOUNT = 19.25
-        return self.price_ht * (1 + TAX_AMOUNT/100.0)
+    cart = models.ForeignKey(Cart, on_delete=models.CASCADE)
 
     def __str__(self):
         return  self.client + " - " + self.product
