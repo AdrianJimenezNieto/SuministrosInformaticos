@@ -1,6 +1,8 @@
 <header>
     <h2 class='logo'>Logo</h2>
-    <a href='{% url 'cart' %}'>CARRITO</a>
+    {% if user.is_authenticated %}
+        <a href='{% url 'cart' id=user.id %}'>CARRITO</a>
+    {% endif %}
     <nav class='navigation'>
         <div>
             <a href='{% url 'index' %}' class='nav-a'>INICIO</a>
