@@ -22,11 +22,17 @@ def viewCart(request, id):
     return render(request, 'cart/cartItems.html', context)
 
 def addToCart(request, product_id, user_id):
-    product = Product.objects.get(id=product_id)
-    cart = Cart.objects.get(user_id=user_id)
-    cartItem = CartItem()
+    if user_id in Cart.objects.values_list('user_id', flat=True):
+        cart = Cart.objects.get(user_id=user_id)
+        
+    else:
+        cart = Cart(user=User.objects.get(id=user_id))
+        cart.save()
 
-    return redirect(viewCart)
+    cartItems = CartItem(cart_id=cart.id, product_id=product_id)
+    cartItems.save()
+
+    return redirect('index')
 
 def delFromCart(requets, id):
     return 
