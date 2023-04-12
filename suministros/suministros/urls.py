@@ -13,5 +13,5 @@ urlpatterns = [
     path('graphs/', include('graphs.urls')),
     path('sales/', include('sale.urls')),
     path('cart/', include('cart.urls')),
+    path('messages/', include('messages.urls')),
 ]
-

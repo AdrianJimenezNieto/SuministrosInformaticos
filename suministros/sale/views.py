@@ -9,8 +9,10 @@ from django.http import HttpResponse
 def sale(request, id_product, id_user):
     user = User.objects.get(id=id_user)
     product = Product.objects.get(id=id_product)
+    product.stock -= 1
     sale = Sale(user=user, product=product)
     
+    product.save()
     sale.save()
         
     return redirect('product')
@@ -21,7 +23,11 @@ def saleCart(request, user_id):
     items = CartItem.objects.filter(cart_id=cart.id)
 
     for item in items:
+        product = item.product
         sale = Sale(product=item.product, user=user, amount=item.quantity)
+        product.stock -= 1
+
+        product.save()
         sale.save()
         item.delete()
 

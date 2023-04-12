@@ -5,6 +5,8 @@ from supplier.forms import SupplierForm
 from staff.forms import StaffForm
 from django.contrib.auth import login, logout, authenticate
 
+from django.http import HttpResponse
+
 def signUp(request, acceso):
     if request.method == 'POST':
         if int(acceso) == 1:
@@ -15,6 +17,7 @@ def signUp(request, acceso):
             form = StaffForm(request.POST)
 
         if form.is_valid():
+            return HttpResponse('llego aqui')
             user = form.save()
             login(request, user)
             return redirect('/')
@@ -28,6 +31,7 @@ def signUp(request, acceso):
             form = StaffForm()
 
         return render(request, 'registration/SignUp.html', {'form': form, 'acceso': acceso})
+    
     
 def seleccionarAcceso(request):
     if request.method == 'POST':
