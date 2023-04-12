@@ -29,12 +29,15 @@ def addToCart(request, product_id, user_id):
         cart = Cart(user=User.objects.get(id=user_id))
         cart.save()
 
-    cartItems = CartItem(cart_id=cart.id, product_id=product_id)
-    cartItems.save()
+    item = CartItem(cart_id=cart.id, product_id=product_id)
+    item.save()
 
     return redirect('index')
 
-def delFromCart(requets, id):
-    return 
+def delFromCart(requets, item_id, user_id):
+    item = CartItem.objects.get(id=item_id)
+    item.delete()
+
+    return redirect('cart', id=user_id)
 
 

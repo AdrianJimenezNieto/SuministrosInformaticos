@@ -11,7 +11,7 @@
             <div class='actions'>
                 <b>{{ item.product.name }}</b>
                 <a href='{% url 'detailProduct' id=item.product.id %}'>VER</a>
-                <a href='{% url 'sales' id_product=item.product.id id_user=user.id %}'>COMPRAR</a>
+                <a href='{% url 'delFromCart' item_id=item.id user_id=user.id %}'>BORRAR DEL CARRITO</a>
             </div>      
         </li>
         {% endfor %}
