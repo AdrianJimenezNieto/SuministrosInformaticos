@@ -21,7 +21,7 @@
                 </div>
             </li>
         </ul>
-        <div class='cart'><a href='#'>Añadir al carrito</a></div>
+        <div class='cart'><a href='{% url 'addToCart' product_id=product.id user_id=user.id %}'>AÑADIR AL CARRITO</a></div>
     </div>
     
     
