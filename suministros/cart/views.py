@@ -24,15 +24,19 @@ def viewCart(request, id):
 def addToCart(request, product_id, user_id):
     if user_id in Cart.objects.values_list('user_id', flat=True):
         cart = Cart.objects.get(user_id=user_id)
-        
     else:
         cart = Cart(user=User.objects.get(id=user_id))
         cart.save()
 
-    item = CartItem(cart_id=cart.id, product_id=product_id)
+    if product_id in CartItem.objects.values_list('product_id', flat=True):
+        item = CartItem.objects.get(cart_id=cart.id, product_id=product_id)
+        item.quantity += 1
+    else:
+        item = CartItem(cart_id=cart.id, product_id=product_id)
+
     item.save()
 
-    return redirect('index')
+    return redirect('product')
 
 def delFromCart(requets, item_id, user_id):
     item = CartItem.objects.get(id=item_id)

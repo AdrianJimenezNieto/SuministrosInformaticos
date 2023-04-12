@@ -4,6 +4,7 @@
 
 {% block 'content' %}
     <h1>CARRITO DE LA COMPRA</h1>
+    {% if items.count != 0 %}
     <ul class='product-list'>
         {% for item in items %}
         <li>
@@ -16,4 +17,10 @@
         </li>
         {% endfor %}
     </ul>
+    <a href='{% url 'saleCart' user_id=user.id %}'>COMPRAR TODO EL CARRITO</a>
+    {% else %}
+    <div style='height:500px; display:flex; align-items:center; opacity:80%;'>
+        <h2>EL CARRITO ESTÁ VACIO... :(</h2>
+    </div>
+    {% endif %}
 {% endblock  %}
