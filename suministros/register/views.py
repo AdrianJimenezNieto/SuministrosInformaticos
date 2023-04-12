@@ -17,7 +17,6 @@ def signUp(request, acceso):
             form = StaffForm(request.POST)
 
         if form.is_valid():
-            return HttpResponse('llego aqui')
             user = form.save()
             login(request, user)
             return redirect('/')
