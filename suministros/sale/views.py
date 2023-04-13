@@ -3,6 +3,7 @@ from .models import Sale
 from product.models import Product
 from django.contrib.auth.models import User
 from cart.models import Cart, CartItem
+from stockControl.models import StockControl
 
 from django.http import HttpResponse
 
@@ -14,7 +15,11 @@ def sale(request, id_product, id_user):
     
     product.save()
     sale.save()
-        
+
+    if product.stock < 0.9 * product.minStock:
+        stockControl = StockControl(product=product)
+        stockControl.save()
+
     return redirect('product')
 
 def saleCart(request, user_id):
@@ -25,7 +30,11 @@ def saleCart(request, user_id):
     for item in items:
         product = item.product
         sale = Sale(product=item.product, user=user, amount=item.quantity)
-        product.stock -= 1
+        product.stock -= sale.amount
+
+        if product.stock < 0.9 * product.minStock:
+            stockControl = StockControl(product=product)
+            stockControl.save()
 
         product.save()
         sale.save()

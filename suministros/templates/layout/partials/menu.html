@@ -12,7 +12,7 @@
             {% if user.is_authenticated %}
                 <p>Sesión iniciada como {{ user.username | upper}}</p>
                 <a href='{% url 'cart' id=user.id %}' class='nav-a' style='margin-left:10px'><img src="../../static/img/shopping_cart.png" style='filter: invert(100%) sepia(9%) saturate(0%) hue-rotate(85deg) brightness(110%) contrast(112%); width:40px;' alt=''></a>
-                <a href='{% url 'messages' id=user.id %}' class='nav-a' style='margin-left:10px'><img src="../../static/img/messages.png" style='filter: invert(100%) sepia(9%) saturate(0%) hue-rotate(85deg) brightness(110%) contrast(112%); width:40px;' alt=''></a>
+                <a href='{% url 'stockControl' %}' class='nav-a' style='margin-left:10px'><img src="../../static/img/messages.png" style='filter: invert(100%) sepia(9%) saturate(0%) hue-rotate(85deg) brightness(110%) contrast(112%); width:40px;' alt=''></a>
                 {% if user.costumer.isCostumer == True %}
                 <a class='btnSingup-popup' href='{% url 'editCostumer' id=user.id %}'>EDITAR PERFIL</a>
                 {% elif user.supplier.isSupplier == True %}

@@ -1,5 +1,7 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from .models import StockControl
+from product.models import Product
+from sale.models import SupplierSale
 
 def stockControl (request):
     stockControl = StockControl.objects.all()
@@ -8,3 +10,18 @@ def stockControl (request):
     }
 
     return render(request, 'stockControl/stockControl.html', context)
+
+def buyStock(request, stockControl_id):
+
+    stockControl = StockControl.objects.get(id=stockControl_id)
+    product = Product.objects.get(id=stockControl.product.id)
+    supplierSale = SupplierSale(product=product, supplier=product.supplier, amount=product.minStock-product.stock)
+
+
+    product.stock = product.minStock
+    
+    supplierSale.save()
+    stockControl.delete()
+    product.save()
+
+    return redirect('stockControl')

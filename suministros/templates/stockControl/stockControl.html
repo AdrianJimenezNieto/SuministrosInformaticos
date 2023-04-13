@@ -4,13 +4,21 @@
 
 {% block 'content' %}
     <h1>CONTROL STOCK</h1>
-    <ul class='stockManagement-list'>
-        {% for message in stockManagement %}
+    {% if stockControl.count != 0 %}
+    <ul class='stockControl-list'>
+        {% for message in stockControl %}
         <li>
             <div class='message'>
-                <b>{{ message.name }}</b>
+                <h3>{{ message.title | upper }}</h3>
+                <p>Stock insuficiente del producto( {{ message.product.name | upper }} ), por favor pida más al proveedor.</p>
+                <a href = '{% url 'buyStock' stockControl_id=message.id %}'>RELLENAR STOCK </a>
             </div>      
         </li>
         {% endfor %}
     </ul>
+    {% else %}
+    <div style='height:500px; display:flex; align-items:center; opacity:80%;'>
+        <h2>NO HAT MENSAJES DE CONTROL DE STOCK, TODO ESTÁ EN ORDEN :D</h2>
+    </div>
+    {% endif %}
 {% endblock  %}
