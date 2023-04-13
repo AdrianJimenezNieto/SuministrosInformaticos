@@ -2,7 +2,6 @@ from django.db import models
 from supplier.models import Supplier
 
 class Product(models.Model):
-    supplier = models.ForeignKey(Supplier, on_delete=models.CASCADE, null=True)
 
     name = models.CharField(max_length=50, blank=False, null=True)
     categoria = models.CharField(max_length=50, blank=False, null=True)
@@ -15,6 +14,8 @@ class Product(models.Model):
     pvp = models.FloatField(blank=False, null=True)
     discount = models.FloatField(blank=False, null=True)
     finalPrice = models.FloatField(blank=False, null=True)
+
+    supplier = models.ForeignKey(Supplier, on_delete=models.CASCADE, null=True)
 
     def __str__(self):
         return self.name

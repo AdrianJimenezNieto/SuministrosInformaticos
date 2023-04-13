@@ -1,0 +1,16 @@
+{% extends 'layout/base.html' %}
+
+{% block 'title' %} CONTROL STOCK {% endblock  %}
+
+{% block 'content' %}
+    <h1>CONTROL STOCK</h1>
+    <ul class='stockManagement-list'>
+        {% for message in stockManagement %}
+        <li>
+            <div class='message'>
+                <b>{{ message.name }}</b>
+            </div>      
+        </li>
+        {% endfor %}
+    </ul>
+{% endblock  %}

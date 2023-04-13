@@ -10,14 +10,15 @@
         </div>
         <div>
             {% if user.is_authenticated %}
-                <p>Sesión iniciada como {{ user.username | upper}} </p>
+                <p>Sesión iniciada como {{ user.username | upper}}</p>
                 <a href='{% url 'cart' id=user.id %}' class='nav-a' style='margin-left:10px'><img src="../../static/img/shopping_cart.png" style='filter: invert(100%) sepia(9%) saturate(0%) hue-rotate(85deg) brightness(110%) contrast(112%); width:40px;' alt=''></a>
+                <a href='{% url 'messages' id=user.id %}' class='nav-a' style='margin-left:10px'><img src="../../static/img/messages.png" style='filter: invert(100%) sepia(9%) saturate(0%) hue-rotate(85deg) brightness(110%) contrast(112%); width:40px;' alt=''></a>
                 {% if user.costumer.isCostumer == True %}
                 <a class='btnSingup-popup' href='{% url 'editCostumer' id=user.id %}'>EDITAR PERFIL</a>
                 {% elif user.supplier.isSupplier == True %}
-                <a class='btnSingUp-popup' href='{% url 'editSupplier' id=user.id %}'>EDITAR PERFIL</a>
+                <a class='btnSingup-popup' href='{% url 'editSupplier' id=user.id %}'>EDITAR PERFIL</a>
                 {% elif user.is_staff == True %}
-                <a class='btnSingUp-popup' href='{% url 'editStaff' id=user.id %}'>EDITAR PERFIL</a>
+                <a class='btnSingup-popup' href='{% url 'editStaff' id=user.id %}'>EDITAR PERFIL</a>
                 {% endif %}
                 <a class='btnLogout-popup' href='{% url 'logout' %}'>LOG OUT</a>
             {% else %}

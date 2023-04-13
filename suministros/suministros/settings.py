@@ -46,6 +46,7 @@ INSTALLED_APPS = [
     'graphs',
     'sale',
     'cart',
+    'stockControl',
 ]
 
 MIDDLEWARE = [

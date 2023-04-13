@@ -5,7 +5,7 @@ from datetime import datetime
 from product.models import Product
 
 class Cart(models.Model):
-    user = models.ForeignKey(User, on_delete=models.CASCADE, unique=True)
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
     created_at = models.DateTimeField(default=datetime.now)
 
 class CartItem(models.Model):
