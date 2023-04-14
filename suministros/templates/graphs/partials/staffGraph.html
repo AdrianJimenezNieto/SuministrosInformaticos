@@ -1,2 +1,2 @@
-<a href='{% url 'graphs' graph='costumer' %}'>GRAFICA DE COMPRAS</a>
-<a href='{% url 'graphs' graph='supplier' %}'>GRAFICA DE VENTAS</a>
+<a href='{% url 'graphs' graph='costumer' user_id=user.id %}'>GRAFICA DE COMPRAS</a>
+<a href='{% url 'graphs' graph='supplier' user_id=user.id %}'>GRAFICA DE VENTAS</a>
