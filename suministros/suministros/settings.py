@@ -43,10 +43,10 @@ INSTALLED_APPS = [
     'product',
     'django_seed',
     'register',
-    'graphs',
     'sale',
     'cart',
     'stockControl',
+    'charts',
 ]
 
 MIDDLEWARE = [
