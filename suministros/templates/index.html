@@ -3,7 +3,27 @@
 {% block 'title' %}Inicio{% endblock  %}
 
 {% block 'content' %}
-    
-    <h1>Pagina de Inicio</h1>
+        <div class='index-container'>
+        <div class="index-left">
+            <h2>HARDWARE STORE ®</h2>
+            <img src="../static/img/logo.png" alt="">
+        </div>
+        <hr>
+        <div class="index-right">
+            <h2>BIENVENIDO A LA TIENDA ONLINE DE HARDWARE STORE ®</h2>
+            <div class="index-info">
+                <h3>SOBRE NOSOTROS</h3>
+                <p>Somos una pequeña empresa de suministros informáticos que trabaja con las mejores marcas del mercado para ofrecerte los mejores productos al mejor precio.</p>
+                <p>Registrate con nosotros para empezar a disfrutar de todos nuestros productos así como llevar la cuenta de tus compras si eres cliente o de ver lo que nos has vendido si eres uno de nuestros proveedores.</p>
+                {% if user.is_authenticated %}
+                {% else %}
+                    <div class="index-btn-container">
+                        <a class='index-btn' href='{% url 'login' %}'>LOG IN</a>
+                        <a class='index-btn' href='{% url 'select' %}'>REGISTRARSE</a>
+                    </div>
+                {% endif %}
+            </div>
+        </div>
+    </div>
     
 {% endblock  %}

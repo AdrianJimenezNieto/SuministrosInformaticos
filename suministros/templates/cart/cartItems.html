@@ -18,7 +18,9 @@
         </li>
         {% endfor %}
     </ul>
-    <a href='{% url 'saleCart' user_id=user.id %}'>COMPRAR TODO EL CARRITO</a>
+    <div class='cart'>
+        <a href='{% url 'saleCart' user_id=user.id %}'>COMPRAR TODO EL CARRITO</a>
+    </div>
     {% else %}
     <div style='height:500px; display:flex; align-items:center; opacity:80%;'>
         <h2>EL CARRITO ESTÁ VACIO... :(</h2>

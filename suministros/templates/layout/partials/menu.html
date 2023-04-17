@@ -1,5 +1,5 @@
 <header>
-    <h2 class='logo'>Logo</h2>
+    <h2 class='logo'>HARDWARE STORE<img src="../../static/img/logo.png" style='filter: invert(100%) sepia(9%) saturate(0%) hue-rotate(85deg) brightness(110%) contrast(112%); width:40px;' alt=''></h2>
     <nav class='navigation'>
         <div>
             <a href='{% url 'index' %}' class='nav-a'>INICIO</a>
@@ -12,7 +12,9 @@
             {% if user.is_authenticated %}
                 <p>Sesión iniciada como {{ user.username | upper}}</p>
                 <a href='{% url 'cart' id=user.id %}' class='nav-a' style='margin-left:10px'><img src="../../static/img/shopping_cart.png" style='filter: invert(100%) sepia(9%) saturate(0%) hue-rotate(85deg) brightness(110%) contrast(112%); width:40px;' alt=''></a>
-                <a href='{% url 'stockControl' %}' class='nav-a' style='margin-left:10px'><img src="../../static/img/messages.png" style='filter: invert(100%) sepia(9%) saturate(0%) hue-rotate(85deg) brightness(110%) contrast(112%); width:40px;' alt=''></a>
+                {% if user.is_staff == True %}
+                    <a href='{% url 'stockControl' %}' class='nav-a' style='margin-left:10px'><img src="../../static/img/messages.png" style='filter: invert(100%) sepia(9%) saturate(0%) hue-rotate(85deg) brightness(110%) contrast(112%); width:40px;' alt=''></a>
+                {% endif %}
                 {% if user.costumer.isCostumer == True %}
                 <a class='btnSingup-popup' href='{% url 'editCostumer' id=user.id %}'>EDITAR PERFIL</a>
                 {% elif user.supplier.isSupplier == True %}
