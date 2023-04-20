@@ -1,15 +1,21 @@
 {% extends 'layout/base.html' %}
+{% load static %}
 
 {% block 'title' %}Editar Usuario (Proveedor){% endblock  %}
+
+{% block 'scripts' %}
+    <script type='html/javascript' src="{% static 'scripts/confirmation.js' %}"></script>
+{% endblock  %}
 
 {% block 'content' %}
 
     <h1>EDITAR USUARIO</h1>
     <div class='editContainer'>
-        <form action='{% url 'editProduct' id=id%}' method='POST' class='editForm'>
+        <form action='{% url 'editProduct' id=id%}' method='POST' class='editForm' onsubmit='confirm_update()'>
             {% csrf_token %}
             {{form.as_p}}
-            <input type='submit' value='EditarUsuario' class='btn-submit'>
+            <input type='submit' onclick='confirm_update()' value='EditarUsuario' class='btn-submit'>
+            <p>Si quieres cambiar tu contraseña haz click <a href="{% url 'updatePasswordSupplier' id=user.id %}">AQUI</a></p>
         </form>
     </div>
 

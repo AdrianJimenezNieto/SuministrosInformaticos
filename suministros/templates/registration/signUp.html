@@ -5,12 +5,12 @@
 {% block 'content' %}
     
     <h1>REGISTRARSE</h1>
-    <div class='containerForm'>
-        <form  action='{% url 'signUp' acceso=acceso %}' method='POST' class='selectForm'>
+    <div class='editContainer'>
+        <form  action='{% url 'signUp' acceso=acceso %}' method='POST' class='editForm'>
             {% csrf_token %}
             {{ form.as_p }}
             <input type='submit' value='Registrarse' class='btn-submit'>
-            <p>¿Ya tienes una cuenta? Inicia sesión <a href="/login">AQUI</a>!!</p>
+            <p>¿Ya tienes una cuenta? Inicia sesión <a href="{% url 'login' %}">AQUI</a>!!</p>
         </form>
     </div>
 

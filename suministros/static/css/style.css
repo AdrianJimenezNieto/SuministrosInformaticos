@@ -62,55 +62,38 @@ footer {
     background: linear-gradient(to right, transparent, #000 70%, transparent)
 }
 
-/* CONFIRMATION POPUP */
+/* MESSAGES */
 
-.confirmation-container {
-    position: absolute;
-    height: 100vh;
-    width: 100vw;
-    background-color: #0000007a;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    z-index: 1;
-    display: none;
-}
-
-.confirmation {
-    background-color: beige;
-    width: 500px;
-    height: 200px;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    align-items: center;
-    padding: 20px 30px;
-    margin: 0px 20px;
-    border-radius: 10px;
-    text-align: center;
-    border: 4px solid black;
-}
-
-.confirmation h2 {
-    margin-bottom: 20px;
-}
-
-.confirmation-btns {
+.user-message {
+    list-style: none;
+    opacity: 0;
+    display: block;
     width: 100%;
-    flex: 1;
-    display: flex;
-    flex-direction: row;
-    justify-content: flex-end;
-    align-items: center;
-}
-
-.confirmation-btns button {
     height: 40px;
-    margin-left: 20px;
-    padding: 10px 15px;
+    background-color: rgb(197, 82, 82);
+    color: #000;
+    border: 0;
+    transition: 0.5s ease-in;
 }
 
-/* CONFIRMATION POPUP */
+.user-message li {
+    color: #000;
+    text-align: center;
+    font-size: 1.2em;
+    padding: 10px;
+    border: none;
+}
+
+.animation-message {
+    opacity: 1;
+}
+
+.hideMessage {
+    display: none !important;
+}
+
+/* MESSAGES */
+
 
 /* MENU */
 

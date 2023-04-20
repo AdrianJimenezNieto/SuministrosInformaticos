@@ -4,8 +4,7 @@ from product.models import Product
 from django.contrib.auth.models import User
 from cart.models import Cart, CartItem
 from stockControl.models import StockControl
-
-from django.http import HttpResponse
+from django.contrib import messages
 
 def sale(request, id_product, id_user):
     user = User.objects.get(id=id_user)
@@ -20,6 +19,7 @@ def sale(request, id_product, id_user):
         stockControl = StockControl(product=product)
         stockControl.save()
 
+    messages.add_message(request, messages.INFO, "PRODUCTO COMPRADO")
     return redirect('product')
 
 def saleCart(request, user_id):
@@ -40,6 +40,6 @@ def saleCart(request, user_id):
         sale.save()
         item.delete()
 
-
+    messages.add_message(request, messages.INFO, "COMPRADO TODOO EL CARRITO")
     return redirect('product')
     

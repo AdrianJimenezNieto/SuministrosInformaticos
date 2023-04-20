@@ -2,6 +2,7 @@ from django.shortcuts import render, redirect
 from .models import StockControl
 from product.models import Product
 from sale.models import SupplierSale
+from django.contrib import messages
 
 def stockControl (request):
     stockControl = StockControl.objects.all()
@@ -24,4 +25,5 @@ def buyStock(request, stockControl_id):
     stockControl.delete()
     product.save()
 
+    messages.add_message(request, messages.INFO, "STOCK COMPRADO AL PROVEEDOR")
     return redirect('stockControl')

@@ -1,9 +1,8 @@
 from django.shortcuts import render, redirect
 from .models import Cart, CartItem
-from product.models import Product
 from django.contrib.auth.models import User
+from django.contrib import messages
 
-from django.http import HttpResponse
 
 def viewCart(request, id):
 
@@ -36,12 +35,14 @@ def addToCart(request, product_id, user_id):
 
     item.save()
 
+    messages.add_message(request, messages.INFO, "PRODUCTO AÑADIDO AL CARRITO")
     return redirect('product')
 
-def delFromCart(requets, item_id, user_id):
+def delFromCart(request, item_id, user_id):
     item = CartItem.objects.get(id=item_id)
     item.delete()
 
+    messages.add_message(request, messages.INFO, "PRODUCTO QUITADO DEL CARRITO")
     return redirect('cart', id=user_id)
 
 

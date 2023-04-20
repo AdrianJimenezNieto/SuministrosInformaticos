@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect
 from .models import Staff
-from .forms import StaffForm
-from django.http import HttpResponse
+from .forms import StaffForm, UpdateStaffForm, UpdatePasswordStaffForm
+from django.contrib import messages
 
 def index(request):
     staffs = Staff.objects.all()
@@ -17,24 +17,10 @@ def detail(request, id):
     }
     return render(request, 'staff/detail.html', context)
 
-def create(request):
-    if request.method == 'GET':
-        form = StaffForm()
-        context = {
-            'form': form
-        }
-        return render(request, 'staff/create.html', context)
-
-    if request.method =='POST':
-        form = StaffForm(request.POST)
-        if form.is_valid():
-            return redirect('staff')
-
 
 def edit(request, id):
-    staff = Staff.objects.get(id=id)
     if request.method == 'GET':
-        form = StaffForm(instance= staff)
+        form = UpdateStaffForm(instance=request.user)
         context = {
             'form': form,
             'id': id,
@@ -43,17 +29,40 @@ def edit(request, id):
 
 
     if request.method == 'POST':
-        form = StaffForm(request.POST, instance=staff)
+        form = UpdateStaffForm(request.POST, instance=request.user)
         if form.is_valid():
             form.save()
-            context = {
-                'form': form,
-                'id': id,
-            }
-        return redirect('staff')
+            messages.add_message(request, messages.INFO, "PERFIL ACTUALIZADO")
+            return redirect('index')
+        else:
+            messages.add_message(request, messages.INFO, "ERROR AL ACTUALIZAR EL PERFIL")
+            return redirect('index')
+        
+def updatePassword(request, id):
+    
+    if request.method == 'GET':
+        form = UpdatePasswordStaffForm(request.user)
+        context = {
+            'form': form,
+            'id': id,
+        }
+        return render(request, 'staff/updatePassword.html', context)
+
+
+    if request.method == 'POST':
+        form = UpdatePasswordStaffForm(user=request.user, data = request.POST)
+        if form.is_valid():
+            form.save()
+            messages.add_message(request, messages.INFO, "CONTRASEÑA ACTUALIZADA")
+            return redirect('index')
+        else:
+            messages.add_message(request, messages.INFO, "ERROR AL ACTUALIZAR LA CONTRASEÑA")
+            return redirect('index')
 
 
 def delete(request, id):
     staff = Staff.objects.get(id=id)
     staff.delete()
+
+    messages.add_message(request, messages.INFO, "USUARIO BORRADO")
     return redirect('staff')

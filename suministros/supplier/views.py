@@ -1,6 +1,7 @@
 from django.shortcuts import render, redirect
 from .models import Supplier
-from .forms import SupplierForm
+from .forms import SupplierForm, UpdateSupplierForm, UpdatePasswordSupplierForm
+from django.contrib import messages
 
 def index(request):
     suppliers = Supplier.objects.all()
@@ -27,13 +28,16 @@ def create(request):
     if request.method =='POST':
         form = SupplierForm(request.POST)
         if form.is_valid():
+            messages.add_message(request, messages.INFO, "USUARIO CREADO")
             return redirect('supplier')
+        else:
+            messages.add_message(request, messages.INFO, "ERROR AL CREAR EL PERFIL")
+            return redirect('index')
 
 
 def edit(request, id):
-    supplier = Supplier.objects.get(id=id)
     if request.method == 'GET':
-        form = SupplierForm(instance= supplier)
+        form = UpdateSupplierForm(instance=request.user)
         context = {
             'form': form,
             'id': id,
@@ -42,17 +46,41 @@ def edit(request, id):
 
 
     if request.method == 'POST':
-        form = SupplierForm(request.POST, instance=supplier)
+        form = UpdateSupplierForm(request.POST, instance=request.user)
         if form.is_valid():
             form.save()
-            context = {
-                'form': form,
-                'id': id,
-            }
-        return redirect('supplier')
+            messages.add_message(request, messages.INFO, "PERFIL ACTUALIZADO")
+            return redirect('index')
+        else:
+            messages.add_message(request, messages.INFO, "ERROR AL ACTUALIZAR EL PERFIL")
+            return redirect('index')
+        
+def updatePassword(request, id):
+    
+    if request.method == 'GET':
+        form = UpdatePasswordSupplierForm(request.user)
+        context = {
+            'form': form,
+            'id': id,
+        }
+        
+        return render(request, 'supplier/updatePassword.html', context)
+
+
+    if request.method == 'POST':
+        form = UpdatePasswordSupplierForm(user=request.user, data = request.POST)
+        if form.is_valid():
+            form.save()
+            messages.add_message(request, messages.INFO, "CONTRASEÑA ACTUALIZADA")
+            return redirect('index')
+        else:
+            messages.add_message(request, messages.INFO, "ERROR AL ACTUALIZAR LA CONTRASEÑA")
+            return redirect('index')
 
 
 def delete(request, id):
     supplier = Supplier.objects.get(id=id)
     supplier.delete()
+
+    messages.add_message(request, messages.INFO, "USUARIO BORRADO")
     return redirect('supplier')

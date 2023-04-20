@@ -1,17 +1,27 @@
 {% extends 'layout/base.html' %}
+{% load static %}
 
 {% block 'title' %}Editar Usuario(Cliente){% endblock  %}
+
+{% block 'scripts' %}
+    <script src="{% static '/scripts/confirmation.js' %}"></script>
+{% endblock  %}
 
 {% block 'content' %}
 
     <h1>EDITAR USUARIO</h1>
 
     <div class='editContainer'>
-        <form action='{% url 'editCostumer' id=id %}' method='POST' class='editForm'>
+        <form name='editForm' action='{% url 'editCostumer' id=id %}' method='POST' class='editForm' id='editForm' onsubmit='confirm_update()'>
             {% csrf_token %}
             {{form.as_p}}
-            <input type='submit' value='Editar Usuario' class='btn-submit'>
+            <input type=button onclick='confirm_update()' class='btn-submit' value='EDITAR USUARIO'></input>
+            <p>Si quieres cambiar tu contraseña haz click <a href="{% url 'updatePasswordCostumer' id=user.id %}">AQUI</a></p>
         </form>
     <div>
 
 {% endblock  %}
+
+
+
+
