@@ -5,17 +5,16 @@ from supplier.models import Supplier
 from sale.models import Sale, SupplierSale
 from datetime import datetime
 
-def chart(request, user_id, chartType=None):
-    user = User.objects.get(id=user_id)
+def chart(request, chartType=None):
     context = {}
 
     try:
-        if isinstance(user.costumer, Costumer):
+        if isinstance(request.user.costumer, Costumer):
             context = {
                 'access': 1,
             }
             if chartType != None:
-                dataX, dataY = getData(Sale.objects.filter(user_id=user.id), chartType)
+                dataX, dataY = getData(Sale.objects.filter(user_id=request.user.id), chartType)
                 context['chartLabel'] = 'buys'
                 context['chart'] = True
                 context['dataX'] = dataX
@@ -24,13 +23,13 @@ def chart(request, user_id, chartType=None):
         pass
 
     try:    
-        if isinstance(user.supplier, Supplier):
+        if isinstance(request.user.supplier, Supplier):
             context = {
                 'access': 2
             }
             if chartType != None:
-                print(user.id)
-                dataX, dataY = getData(SupplierSale.objects.filter(supplier_id=user.id), chartType)
+                print(request.user.id)
+                dataX, dataY = getData(SupplierSale.objects.filter(supplier_id=request.user.id), chartType)
                 context['chartLabel'] = 'sale'
                 context['chart'] = True
                 context['dataX'] = dataX
@@ -38,7 +37,7 @@ def chart(request, user_id, chartType=None):
     except Exception:
         pass
 
-    if user.is_staff == True:
+    if request.user.is_staff == True:
         context = {
                 'access': 3
             }

@@ -14,17 +14,17 @@
     {% include 'layout/partials/menu.html' %}
 
     {% if messages %}
-        <ul class="user-message" id='user-message'>
         {% for message in messages %}
-            <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+            <ul class="user-message" id='user-message' name='message'>
+                <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+            </ul>
         {% endfor %}
-        </ul>
     {% endif %}
 
     <main>
         {% block 'content' %}{% endblock  %}
         {% block 'scripts' %}{% endblock  %}
-        <script src="{% static '/scripts/message.js' %}"></script>
+            <script src="{% static '/scripts/message.js' %}"></script>
     </main>
     <div class='delimiter'></div>
     <footer>

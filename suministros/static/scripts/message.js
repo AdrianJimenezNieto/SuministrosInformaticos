@@ -1,18 +1,17 @@
-console.log('lo tengo')
 
 window.addEventListener('load', function () {
-    const msg = document.getElementById('user-message');
+    const msg = document.getElementsByName('message');
 
     setTimeout( function () {
-        msg.classList.add('animation-message');
+        msg.forEach(element => element.classList.add('animation-message'));
     }, 1);
 
     setTimeout( function () {
-        msg.classList.remove('animation-message');
+        msg.forEach(element => element.classList.remove('animation-message'));
     }, 2000);
 
     setTimeout( function () {
-        msg.classList.add('hideMessage');
+        msg.forEach(element => element.classList.remove('hide-message'));
     }, 2750);
 
 })

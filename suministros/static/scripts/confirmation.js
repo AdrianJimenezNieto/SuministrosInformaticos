@@ -1,33 +1,27 @@
 console.log('hola')
-let enter = false
 
 function confirm_update(){
-    if (confirm('¿Quiere guardar los datos?')) {
-       document.editForm.submit()
-    }
+    return confirm('¿Quiere guardar los datos?');
 }
 
 function confirm_update_pass(){
-    if (confirm('¿Quiere guardar los datos?')){
-       document.editForm.submit()
-    }
+    return confirm('¿Quiere cambiar la contraseña?');
+
 }
 
 function confirm_cart(){
-    if (confirm('¿Quiere guardar los datos?')){
-       document.editForm.submit()
-    }
+    return confirm('¿Quiere comprar todo el carrito?');
+}
+
+function confirm_cart_delete(){
+    return confirm('¿Quiere borrar este item del carrito?');
 }
 
 function confirm_buy(){
-    if (confirm('¿Quiere guardar los datos?')){
-       document.editForm.submit()
-    }
+    return confirm('¿Quiere comprar el producto?');
 }
 
 function log_out(){
-    if (confirm('¿Quiere guardar los datos?')){
-       document.editForm.submit()
-    }
+    return confirm('¿Quiere salir del sistema?');
 }
 

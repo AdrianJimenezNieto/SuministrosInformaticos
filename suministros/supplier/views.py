@@ -10,7 +10,7 @@ def index(request):
     }
     return render(request, 'supplier/index.html', context) 
 
-def detail(request, id):
+def detail(request):
     supplier = Supplier.objects.get(id=id)
     context = {
         'supplier': supplier,
@@ -35,7 +35,7 @@ def create(request):
             return redirect('index')
 
 
-def edit(request, id):
+def edit(request):
     if request.method == 'GET':
         form = UpdateSupplierForm(instance=request.user)
         context = {
@@ -55,7 +55,7 @@ def edit(request, id):
             messages.add_message(request, messages.INFO, "ERROR AL ACTUALIZAR EL PERFIL")
             return redirect('index')
         
-def updatePassword(request, id):
+def updatePassword(request):
     
     if request.method == 'GET':
         form = UpdatePasswordSupplierForm(request.user)
@@ -78,7 +78,7 @@ def updatePassword(request, id):
             return redirect('index')
 
 
-def delete(request, id):
+def delete(request):
     supplier = Supplier.objects.get(id=id)
     supplier.delete()
 

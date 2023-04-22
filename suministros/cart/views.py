@@ -3,14 +3,13 @@ from .models import Cart, CartItem
 from django.contrib.auth.models import User
 from django.contrib import messages
 
+def viewCart(request,):
 
-def viewCart(request, id):
-
-    if id in Cart.objects.values_list('user_id', flat=True):
-        cart = Cart.objects.get(user_id=id)
+    if request.user.id in Cart.objects.values_list('user_id', flat=True):
+        cart = Cart.objects.get(user_id=request.user.id)
 
     else:
-        cart = Cart(user=User.objects.get(id=id))
+        cart = Cart(user=request.user)
         cart.save()
 
     items = CartItem.objects.filter(cart_id=cart.id)
@@ -20,14 +19,14 @@ def viewCart(request, id):
 
     return render(request, 'cart/cartItems.html', context)
 
-def addToCart(request, product_id, user_id):
-    if user_id in Cart.objects.values_list('user_id', flat=True):
-        cart = Cart.objects.get(user_id=user_id)
+def addToCart(request, product_id):
+    if request.user.id in Cart.objects.values_list('user_id', flat=True):
+        cart = Cart.objects.get(user_id=request.user.id)
     else:
-        cart = Cart(user=User.objects.get(id=user_id))
+        cart = Cart(user=request.user)
         cart.save()
 
-    if product_id in CartItem.objects.values_list('product_id', flat=True):
+    if product_id in CartItem.objects.filter(cart_id=cart.id).values_list('product_id', flat=True):
         item = CartItem.objects.get(cart_id=cart.id, product_id=product_id)
         item.quantity += 1
     else:
@@ -38,11 +37,11 @@ def addToCart(request, product_id, user_id):
     messages.add_message(request, messages.INFO, "PRODUCTO AÑADIDO AL CARRITO")
     return redirect('product')
 
-def delFromCart(request, item_id, user_id):
+def delFromCart(request, item_id):
     item = CartItem.objects.get(id=item_id)
     item.delete()
 
     messages.add_message(request, messages.INFO, "PRODUCTO QUITADO DEL CARRITO")
-    return redirect('cart', id=user_id)
+    return redirect('cart')
 
 

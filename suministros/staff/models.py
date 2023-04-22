@@ -9,4 +9,4 @@ class Staff(User):
     is_staff = True
 
     def __str__(self):
-        return self.name
+        return self.username

@@ -12,11 +12,11 @@
     <h1>EDITAR USUARIO</h1>
 
     <div class='editContainer'>
-        <form name='editForm' action='{% url 'editCostumer' id=id %}' method='POST' class='editForm' id='editForm' onsubmit='confirm_update()'>
+        <form name='editForm' action='{% url 'editCostumer' %}' method='POST' class='editForm' id='editForm' onsubmit='return confirm_update(this);'>
             {% csrf_token %}
             {{form.as_p}}
-            <input type=button onclick='confirm_update()' class='btn-submit' value='EDITAR USUARIO'></input>
-            <p>Si quieres cambiar tu contraseña haz click <a href="{% url 'updatePasswordCostumer' id=user.id %}">AQUI</a></p>
+            <button value='submit' class='btn-submit'>EDITAR PERFIL</button>
+            <p>Si quieres cambiar tu contraseña haz click <a href="{% url 'updatePasswordCostumer' %}">AQUI</a></p>
         </form>
     <div>
 

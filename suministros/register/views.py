@@ -14,6 +14,7 @@ def signUp(request, acceso):
             form = SupplierForm(request.POST)
         if int(acceso) == 3:
             form = StaffForm(request.POST)
+            form.instance.is_staff = True
         
         if form.is_valid():
             user = form.save()

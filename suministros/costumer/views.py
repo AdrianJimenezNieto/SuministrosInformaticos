@@ -33,8 +33,8 @@ def create(request):
             return redirect('costumer')
 
 
-def edit(request, id):
-    costumer = Costumer.objects.get(id=id)
+def edit(request):
+    costumer = request.user.costumer
     if request.method == 'GET':
         form = UpdateCostumerForm(instance=costumer)
         context = {
@@ -54,7 +54,7 @@ def edit(request, id):
             messages.add_message(request, messages.INFO, "HA HABIDO UN PROBLEMA AL EDITAR EL PERFIL")
             return redirect('index')
         
-def updatePassword(request, id):
+def updatePassword(request):
     
     if request.method == 'GET':
         form = UpdatePasswordCostumerForm(request.user)
@@ -74,9 +74,8 @@ def updatePassword(request, id):
         else:
             return redirect('index')
 
-def delete(request, id):
-    costumer = Costumer.objects.get(id=id)
-    costumer.delete()
+def delete(request):
+    request.user.costumer.delete()
     
     messages.add_message(request, messages.INFO, "USUARIO BORRADO")
     return redirect('costumer')

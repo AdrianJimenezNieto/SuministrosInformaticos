@@ -10,7 +10,7 @@ def index(request):
     }
     return render(request, 'staff/index.html', context) 
 
-def detail(request, id):
+def detail(request):
     staff = Staff.objects.get(id=id)
     context = {
         'staff': staff,
@@ -18,7 +18,7 @@ def detail(request, id):
     return render(request, 'staff/detail.html', context)
 
 
-def edit(request, id):
+def edit(request):
     if request.method == 'GET':
         form = UpdateStaffForm(instance=request.user)
         context = {
@@ -38,7 +38,7 @@ def edit(request, id):
             messages.add_message(request, messages.INFO, "ERROR AL ACTUALIZAR EL PERFIL")
             return redirect('index')
         
-def updatePassword(request, id):
+def updatePassword(request):
     
     if request.method == 'GET':
         form = UpdatePasswordStaffForm(request.user)
@@ -60,8 +60,8 @@ def updatePassword(request, id):
             return redirect('index')
 
 
-def delete(request, id):
-    staff = Staff.objects.get(id=id)
+def delete(request):
+    staff = request.user.staff
     staff.delete()
 
     messages.add_message(request, messages.INFO, "USUARIO BORRADO")
