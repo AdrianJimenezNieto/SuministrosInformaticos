@@ -1,6 +1,11 @@
 {% extends 'layout/base.html' %}
+{% load static %}
 
 {% block 'title' %} PRODUCTOS {% endblock  %}
+
+{% block 'scripts' %}
+    <script src="{% static 'scripts/confirmation.js' %}"></script>
+{% endblock  %}
 
 {% block 'content' %}
     <h1>PRODUCTOS</h1>
@@ -10,7 +15,9 @@
             <div class='image'><p>FOTO</p></div>
             <div class='actions'>
                 <b>{{ product.name }}</b>
-                <a href='{% url 'detailProduct' id=product.id %}'>Ver producto</a>
+                <a href='{% url 'detailProduct' id=product.id %}'>VER</a>
+                <a href='{% url 'sales' id_product=product.id %}' onclick='return confirm_buy(this);'>COMPRAR</a>
+                <a href='{% url 'addToCart' product_id=product.id %}'>AÑADIR AL CARRITO</a>
             </div>      
         </li>
         {% endfor %}

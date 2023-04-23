@@ -1,10 +1,39 @@
+{% load static %}
+
+{% block 'scripts' %}
+    <script src="{% static 'scripts/confirmation.js' %}"></script>
+{% endblock  %}
+
 <header>
-    <h2 class='logo'>Logo</h2>
+    <a href='{% url 'index' %}'><h2 class='logo'>HARDWARE STORE<img src="{% static 'img/logo.png' %}" style='filter: invert(100%) sepia(9%) saturate(0%) hue-rotate(85deg) brightness(110%) contrast(112%); width:40px;' alt=''></h2></a>
+    
     <nav class='navigation'>
-        <a href='{% url 'index' %}' class='nav-a'>Inicio</a>
-        <a href='{% url 'product' %}' class='nav-a'>Productos</a>
-        <a href='#' class='nav-a'>Sobre nosotros</a>
-        <a class='btnLogin-popup' href='{% url 'login' %}'>LogIn</a>
-        <a class='btnSingup-popup' href='{% url 'register' %}'>Registrarse</a>
+        <div>
+            <a href='{% url 'index' %}' class='nav-a'>INICIO</a>
+            <a href='{% url 'product' %}' class='nav-a'>PRODUCTOS</a>
+            {% if user.is_authenticated %}
+                <a href='{% url 'charts' %}' class='nav-a'>GRAFICAS</a>
+            {% endif %}
+        </div>
+        <div>
+            {% if user.is_authenticated %}
+                <p>Sesión iniciada como {{ user.username | upper}}</p>
+                <a href='{% url 'cart' %}' class='nav-a' style='margin-left:10px'><img src="{% static 'img/shopping_cart.png' %}" style='filter: invert(100%) sepia(9%) saturate(0%) hue-rotate(85deg) brightness(110%) contrast(112%); width:40px;' alt=''></a>
+                {% if user.is_staff == True %}
+                    <a href='{% url 'stockControl' %}' class='nav-a' style='margin-left:10px'><img src="{% static 'img/messages.png' %}" style='filter: invert(100%) sepia(9%) saturate(0%) hue-rotate(85deg) brightness(110%) contrast(112%); width:40px;' alt=''></a>
+                {% endif %}
+                {% if user.costumer.isCostumer == True %}
+                <a class='btnSingup-popup' href='{% url 'editCostumer' %}'>EDITAR PERFIL</a>
+                {% elif user.supplier.isSupplier == True %}
+                <a class='btnSingup-popup' href='{% url 'editSupplier' %}'>EDITAR PERFIL</a>
+                {% elif user.is_staff == True %}
+                <a class='btnSingup-popup' href='{% url 'editStaff' %}'>EDITAR PERFIL</a>
+                {% endif %}
+                <a class='btnLogout-popup' href='{% url 'logout' %}' onclick='return log_out(this);'>LOG OUT</a>
+            {% else %}
+                <a class='btnLogin-popup' href='{% url 'login' %}'>LOG IN</a>
+                <a class='btnSingup-popup' href='{% url 'select' %}'>REGISTRARSE</a>
+            {% endif %}
+        </div>
     </nav>
 </header>

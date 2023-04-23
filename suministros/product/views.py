@@ -1,8 +1,11 @@
 from django.shortcuts import render, redirect
 from .models import Product
 from .forms import ProductForm
-from django.http import HttpResponse
+from django.contrib.auth.decorators import login_required
+from django.contrib import messages
 
+
+@login_required(login_url='/register/login')
 def index(request):
     products = Product.objects.all()
     context = {

@@ -1,0 +1,27 @@
+{% extends 'layout/base.html' %}
+
+{% block 'title' %} CONTROL STOCK {% endblock  %}
+
+{% block 'content' %}
+    
+    {% if stockControl.count != 0 %}
+    <div class='stockcontrol-container'>
+        <h1>CONTROL STOCK</h1>
+        <ul class='stockControl-list'>
+            {% for message in stockControl %}
+            <li>
+                <div class='message'>
+                    <h3>{{ message.title | upper }}</h3>
+                    <p>- Stock insuficiente del producto ( {{ message.product.name | upper }} ), por favor pida más al proveedor.</p>
+                    <div class='refill'><a href = '{% url 'buyStock' stockControl_id=message.id %}'>RELLENAR STOCK </a></div>
+                </div>      
+            </li>
+            {% endfor %}
+        </ul>
+        {% else %}
+    <div>
+    <div style='height:500px; display:flex; align-items:center; opacity:80%;'>
+        <h2>NO HAY MENSAJES DE CONTROL DE STOCK, TODO ESTÁ EN ORDEN :D</h2>
+    </div>
+    {% endif %}
+{% endblock  %}

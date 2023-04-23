@@ -1,0 +1,34 @@
+{% extends 'layout/base.html' %}
+{% load static %}
+
+{% block 'title' %} PRODUCTOS {% endblock  %}
+
+{% block 'scripts' %}
+    <script src="{% static 'scripts/confirmation.js' %}"></script>
+{% endblock  %}
+
+{% block 'content' %}
+    <h1>CARRITO DE LA COMPRA</h1>
+    {% if items.count != 0 %}
+    <ul class='product-list'>
+        {% for item in items %}
+        <li>
+            <div class='image'><p>FOTO</p></div>
+            <div class='actions'>
+                <b>{{ item.product.name }}</b>
+                <b>Cantidad: {{ item.quantity }} </b>
+                <a href='{% url 'detailProduct' id=item.product.id %}'>VER</a>
+                <a href='{% url 'delFromCart' item_id=item.id %}' onclick='return confirm_cart_delete(this);'>BORRAR DEL CARRITO</a>
+            </div>      
+        </li>
+        {% endfor %}
+    </ul>
+    <div class='cart'>
+        <a href='{% url 'saleCart' %}' onclick='return confirm_cart(this);'>COMPRAR TODO EL CARRITO</a>
+    </div>
+    {% else %}
+    <div style='height:500px; display:flex; align-items:center; opacity:80%;'>
+        <h2>EL CARRITO ESTÁ VACIO... :(</h2>
+    </div>
+    {% endif %}
+{% endblock  %}

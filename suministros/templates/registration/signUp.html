@@ -1,0 +1,17 @@
+{% extends 'layout/base.html' %}
+
+{% block 'title' %}Registrarse{% endblock  %}
+
+{% block 'content' %}
+    
+    <h1>REGISTRARSE</h1>
+    <div class='editContainer'>
+        <form  action='{% url 'signUp' acceso=acceso %}' method='POST' class='editForm'>
+            {% csrf_token %}
+            {{ form.as_p }}
+            <input type='submit' value='Registrarse' class='btn-submit'>
+            <div style='display: flex; justify-content: flex-start;'> <p style='font-size: 0.9em; margin-top:15px;'>¿Ya tienes una cuenta? Inicia sesión<a style='margin: 0px 5px;' href="{% url 'select' %}">AQUI</a>!!</p> </div>
+        </form>
+    </div>
+
+{% endblock  %}

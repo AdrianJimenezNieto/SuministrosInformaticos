@@ -1,0 +1,60 @@
+{% extends 'layout/base.html' %}
+
+{% block 'title' %} GRAFICAS {% endblock  %}
+
+{% block 'content' %}
+    <h1>GRAFICAS</h1>
+    <div class="chartWraper">
+        <div class="chartSelector">
+            {% if access == 3 %}
+                <a href='{% url 'charts' chartType='salesPerDate' %}'>VENTAS POR DÍAS</a>
+                <a href='{% url 'charts' chartType='salesPerProduct' %}'> VENTAS POR PRODUCTO </a>
+                <a href='{% url 'charts' chartType='salesPerDateSupplier' %}'> COMPRAS A PROVEEDOR POR DIA </a>
+                <a href='{% url 'charts' chartType='salesPerProductSupplier' %}'> COMPRAS A PROVEEDOR POR PRODUCTO </a>
+            {% endif %}
+
+            {% if access == 2 %}
+                <a href='{% url 'charts' chartType='salesPerDateSupplier' %}'> VENTAS POR DIA </a>
+                <a href='{% url 'charts' chartType='salesPerProductSupplier' %}'> VENTAS POR PRODUCTO </a>
+            {% endif %}
+
+            {% if access == 1 %}
+                <a href='{% url 'charts' chartType='salesPerDate' %}'>COMPRAS POR DÍAS</a>
+                <a href='{% url 'charts' chartType='salesPerProduct' %}'> COMPRAS POR PRODUCTO </a>
+            {% endif %}
+        </div>
+
+        <div class="chartWrap">
+            {% if chart == True %}
+                <div class='chart'>
+                    <canvas id="myChart"></canvas>
+                </div>
+                
+                <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+                
+                <script>
+                const ctx = document.getElementById('myChart');
+                
+                new Chart(ctx, {
+                    type: 'bar',
+                    data: {
+                        labels: [{% for data in dataX %} '{{data}}', {% endfor %}],
+                        datasets: [{
+                            label: '{% if chartLabel == 'sale' %} VENTAS {% elif chartLabel == 'buys' %} COMPRAS {% endif %}',
+                            data: [{% for data in dataY %} '{{data}}', {% endfor %}],
+                            backgroundColor: '#000'  
+                        }]
+                    },
+                    options: {
+                        scales: {
+                            y: {
+                            beginAtZero: true
+                            }
+                        }
+                    }
+                });
+                </script>
+            {% endif %}
+        </div>
+    </div>
+{% endblock  %}

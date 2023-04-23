@@ -12,21 +12,25 @@
 </head>
 <body>
     {% include 'layout/partials/menu.html' %}
-    {% if accessLevel == 1 %}
-        <hr>
-        {% include 'layout/partials/menuCostumer.html' %}
+
+    {% if messages %}
+        {% for message in messages %}
+            <ul class="user-message" id='user-message' name='message'>
+                <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+            </ul>
+        {% endfor %}
     {% endif %}
-    {% if accessLevel == 2 %}
-        <hr>
-        {% include 'layout/partials/menuSupplier.html' %}
-    {% endif %}
-    {% if accessLevel == 3 %}
-        <hr>
-        {% include 'layout/partials/menuAdmin.html' %}
-    {% endif %}
+
     <main>
         {% block 'content' %}{% endblock  %}
+        {% block 'scripts' %}{% endblock  %}
+            <script src="{% static '/scripts/message.js' %}"></script>
     </main>
-    {% block 'scripts' %}{% endblock  %}
+    <div class='delimiter'></div>
+    <footer>
+        <p style='opacity: 80%; font-size:0.8em;'>Todos los derechos reservados. ©</p>
+        <div style='opacity: 80%; font-size:0.8em;'>Iconos diseñados por <a href="https://www.flaticon.es/autores/adrianadam" title="adrianadam">adrianadam</a> from <a href="https://www.flaticon.es/" title="Flaticon">www.flaticon.es</a></div>
+        <a style='opacity: 80%; font-size:0.8em;' href="https://www.flaticon.es/iconos-gratis/dialogo" title="diálogo iconos">Diálogo iconos creados por lalawidi - Flaticon</a>
+    </footer>
 </body>
 </html>

@@ -12,49 +12,115 @@
     padding: 0;
     box-sizing: border-box;
     font-family: var(--main-font);
-    color:#fff;
+    color:#000;
 }
-
 
 body {
     min-height: 100vh;
     min-width: 100vw;
-    background: url('../img/background.jpg') no-repeat;
-    background-size: cover;
-    background-position: center;
-    background-attachment: fixed;
+    background-color: beige;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
 }
 
 header {
+    color: beige;
     top: 0;
     left: 0;
     width: 100%;
-    padding: 20px 100px;
+    padding: 20px 25px 10px 25px;
     display: flex;
-    justify-content: space-between;
-    align-items: center;
+    flex-direction: column;
+    justify-content: start;
     background-color: #000;
 }
 
 
 main {
-    position: absolute;
-    top: 100px;
+    flex: 1;
     width: 100%;
-    padding: 20px 20px 20px 20px;
+    height: 100%;
+    padding: 20px 20px 30px 20px;
     display: flex;
     flex-wrap: wrap;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
+    justify-content: flex-start;
 }
+
+footer {
+    height: 150px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content:center;
+}
+
+.delimiter {
+    height: 3px;
+    background: linear-gradient(to right, transparent, #000 70%, transparent)
+}
+
+/* MESSAGES */
+
+.user-message {
+    list-style: none;
+    opacity: 0;
+    display: block;
+    width: 100%;
+    height: 40px;
+    background-color: rgba(36, 106, 211, 0.486);
+    color: #000;
+    border: 0;
+    transition: 0.5s ease-in;
+}
+
+.user-message li {
+    color: #000;
+    text-align: center;
+    font-size: 1.2em;
+    padding: 10px;
+    border: none;
+}
+
+.animation-message {
+    opacity: 1;
+}
+
+.hideMessage {
+    display: none !important;
+}
+
+/* MESSAGES */
+
 
 /* MENU */
 
 .logo {
+    text-align: center;
     font-size: 2em;
     color: #fff;
     user-select: none;
+    display: flex;
+    justify-content: center;
+}
+
+.logo img {
+    margin-left: 20px;
+}
+
+.navigation {
+    margin-top: 15px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.navigation div {
+    display: flex;
+    height: 100%;
+    align-items: center;
 }
 
 .navigation .nav-a {
@@ -87,8 +153,6 @@ main {
 }
 
 .navigation .btnLogin-popup {
-    width: 130px;
-    height: 50px;
     text-decoration: none;
     background-color: transparent;
     padding: 10px 10px;
@@ -105,12 +169,10 @@ main {
 
 .navigation .btnLogin-popup:hover {
     background-color: #fff;
-    color:rgb(71, 66, 66);
+    color:#000;
 }
 
 .navigation .btnSingup-popup {
-    width: 130px;
-    height: 50px;
     text-decoration: none;
     background-color: transparent;
     border: 2px solid #fff;
@@ -127,10 +189,122 @@ main {
 
 .navigation .btnSingup-popup:hover {
     background-color: #7c82d8;
-    color:rgb(71, 66, 66);
+    color:#fff;
+}
+
+.navigation p {
+    font-size: 1.1em;
+    color: #fff;
+    text-decoration: none;
+    font-weight: 500;
+    margin-left: 40px;
+}
+
+.navigation .btnLogout-popup {
+    text-decoration: none;
+    background-color: transparent;
+    border: 2px solid #fff;
+    outline: none;
+    padding: 10px 10px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 1.1em;
+    color: #fff;
+    font-weight: 500;
+    margin-left: 20px;
+    transition: .5s;
+}
+
+.navigation .btnLogout-popup:hover {
+    background-color: #eb2121;
+    color:#fff;
 }
 
 /* MENU */
+
+/* INDEX */
+
+.index-container {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+}
+
+hr {
+    height:60vh;
+    width:.2vw;
+    border-width:0;
+    color:#000;
+    background: linear-gradient(to top, transparent, #000 70%, transparent)
+}
+
+.index-left {
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 50px;
+}
+
+.index-left img {
+    margin-top: 30px;
+    width: 300px;
+}
+
+.index-right {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    padding: 50px;
+}
+
+.index-info {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    height: 100%;
+    margin-top: 50px;
+}
+
+.index-info p {
+    width: 70%;
+    margin-top: 20px;
+}
+
+.index-btn-container {
+    height: 100%;
+    width: 65%;
+    margin-top: 100px;
+    display: flex;
+    justify-content: space-around;
+}
+
+.index-btn {
+    text-decoration: none;
+    margin-top: 15px;
+    background-color: transparent;
+    padding: 5px 5px;
+    color: #000;
+    font-weight: 500;
+    font-size: 1.5em;
+    cursor: pointer;
+    border: 2px solid #000;
+    border-radius: 7px;
+    transition: 0.5s;
+}
+
+.index-btn:hover {
+    border: 2px solid #000;
+    background-color: #8d8d8de5;
+    color:#000;
+}
+
+
+/* INDEX */
 
 /* PRODUCT INDEX */
 
@@ -138,7 +312,7 @@ main {
     width: 100%;
     padding: 20px;
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
     flex-direction: row;
     flex-wrap: wrap;
 }
@@ -163,7 +337,7 @@ main {
 
 .product-list b{
     font-size: 1.3em;
-    color: #fff;
+    color: #000;
     text-decoration: none;
     font-weight: 500;
     padding: 5px;
@@ -172,7 +346,7 @@ main {
 .product-list a{
     position: relative;
     font-size: 1em;
-    color: #fff;
+    color: #000;
     text-decoration: none;
     font-weight: 500;
     padding: 5px;
@@ -185,7 +359,7 @@ main {
     bottom: -10px;
     width: 100%;
     height: 3px;
-    background-color: #fff;
+    background-color: #000;
     border-radius: 15px;
     opacity: 0%;
     transition: .5s;
@@ -199,7 +373,8 @@ main {
 .image {
     width: 100%;
     height: 100%;
-    background-color: #fff;
+    background-color: #7c82d8;
+    border: #000 solid 2px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -301,39 +476,77 @@ main {
     opacity: 75%; 
 }
 
+.cart a{
+    position: relative;
+    font-size: 1.8em;
+    color: #000;
+    text-decoration: none;
+    font-weight: 500;
+    padding: 5px;
+}
+
+.cart a::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: -10px;
+    width: 100%;
+    height: 3px;
+    background-color: #000;
+    border-radius: 15px;
+    opacity: 0%;
+    transition: .5s;
+}
+
+.cart a:hover::after {
+    bottom: -2px;
+    opacity: 100%;
+}
+
 /* PRODUCT DETAIL */
 
 /* EDIT FORM */
 
 .editContainer {
     margin-top: 50px;
-    width: 500px;
-    border: 3px solid #fff;
+    width: 700px;
+    border: 3px solid #000;
     border-radius: 30px;
-    background-color: #ffffff88;
+    background-color: #bdb2b273;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
 }
 
 .editForm {
     padding: 50px;
     display: flex;
-    flex-direction: column;    
+    flex-wrap: wrap;
+    flex-direction: column;
 }
 
 .editForm p {
     display: flex;
+    flex-wrap: wrap;
     flex-direction: row;
-    align-items: flex-start;
+    align-items: flex;
     justify-content: space-between;
     padding: 5px;
 }
 
 .editForm label {
     font-size: 1.1em;
+    margin: 10px;
+}
+
+.editForm span {
+    font-size: 0.8em;
+    margin: 10px;
+    opacity: 60%;
 }
 
 .editForm p input {
-    outline-offset: 5px;
-    border: none;
+    margin: 10px;
     background-color: transparent;
 }
 
@@ -346,20 +559,25 @@ main {
 .btn-submit {
     margin-top: 15px;
     background-color: transparent;
-    color: #fff;
+    color: #000;
     font-weight: 500;
     font-size: 1.5em;
     cursor: pointer;
     height: 50px;
-    border: 1px solid #fff;
+    border: 2px solid #000;
     border-radius: 7px;
     transition: 0.5s;
 }
 
 .btn-submit:hover {
-    border: 1px solid #000;
-    background-color: #fff;
+    border: 2px solid #000;
+    background-color: #ffffff70;
     color:#000;
+}
+
+.info {
+    border: 2px solid #000;
+    border-radius: 2px;
 }
 
 /* EDIT FORM */
@@ -368,10 +586,10 @@ main {
 
 .containerForm {
     margin-top: 50px;
-    width: 400px;
-    border: 3px solid #fff; 
+    width: 600px;
+    border: 3px solid #000; 
     border-radius: 30px;
-    background-color: #ffffff88;
+    background-color: #bdb2b273;
 }
 
 .selectForm {
@@ -409,6 +627,134 @@ main {
 
 /* LOGIN */
 
-.containerForm.create{
+.containerForm .create{
     width: 500px;
 }
+
+/* CHARTS */
+
+.chartWraper {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin: 20px;
+}
+
+.chartSelector {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.chartSelector a {
+    margin-left: 60px;
+}
+
+.chartWrap {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20px;
+}
+
+.chart canvas {
+    width: 1000px;
+}
+.chartSelector a{
+    position: relative;
+    font-size: 1em;
+    color: #000;
+    text-decoration: none;
+    font-weight: 500;
+    padding: 5px;
+}
+
+.chartSelector a::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: -10px;
+    width: 100%;
+    height: 3px;
+    background-color: #000;
+    border-radius: 15px;
+    opacity: 0%;
+    transition: .5s;
+}
+
+.chartSelector a:hover::after {
+    bottom: -2px;
+    opacity: 100%;
+}
+
+/* CHARTS */
+
+/* STOCK CONTROL */
+
+.stockcontrol-container {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 30px;
+}
+
+.stockcontrol-container ul {
+    list-style: none;
+    padding: 20px;
+}
+
+.message {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+}
+
+.message h3 {
+    padding: 5px;
+}
+
+.message p {
+    padding: 5px;
+}
+
+.message .refill {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}
+
+.message a{
+    position: relative;
+    font-size: 1.2em;
+    color: #000;
+    text-decoration: none;
+    font-weight: 500;
+    padding: 5px;
+}
+
+.message a::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: -10px;
+    width: 100%;
+    height: 3px;
+    background-color: #000;
+    border-radius: 15px;
+    opacity: 0%;
+    transition: .5s;
+}
+
+.message a:hover::after {
+    bottom: -2px;
+    opacity: 100%;
+}
+/* STOCK CONTROL */
