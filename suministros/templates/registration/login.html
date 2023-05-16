@@ -12,6 +12,14 @@
             <div style='display: flex; justify-content: flex-start;'> <p style='font-size: 0.9em; margin-top:15px;'>¿No tienes una cuenta? Regístrate<a style='margin: 0px 5px;' href="{% url 'select' %}">AQUI</a>!!</p> </div>
             <input type='submit' value='Log In' class='btn-submit'>
         </form>
+        <div style="opacity: 60%; margin-bottom: 10px; font-size: small;">
+            <h2>Usuarios de prueba:</h2>
+            <ul style="list-style: none;">
+                <li>Cliente => username:cliente, pass:cambiar1234</li>
+                <li>Proveedor => username:proveedor, pass:cambiar1234</li>
+                <li>Staff => username:staff, pass:cambiar1234</li>
+            </ul>
+        </div>   
     </div>
 
 {% endblock  %}
